@@ -72,3 +72,10 @@ temp/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+#Secret files
+.env 
+.env.test
+.env.prod
+.env.secret
+.env*
