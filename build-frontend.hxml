@@ -1,0 +1,5 @@
+# JavaScript Frontend Target Only
+--js bin/frontend/webapp.js
+--main frontend.WebAppMain
+--class-path src
+--dce full
