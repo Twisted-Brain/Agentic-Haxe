@@ -1,0 +1,74 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Haxe compiled output
+bin/
+*.js.map
+*.n
+*.hl
+*.cpp
+*.h
+*.o
+*.a
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Haxe build artifacts
+*.hash
+Build.xml
+HxcppConfig.h
+Options.txt
+libLlmGatewayMain.a
+libLlmGatewayMain.a.hash
+obj/
+include/
+src/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Qodo AI assistant files
+.qodo/
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Temporary folders
+tmp/
+temp/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
