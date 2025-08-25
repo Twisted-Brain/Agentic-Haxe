@@ -1,4 +1,4 @@
-package frontend;
+package frontend.js;
 
 import js.html.Document;
 import js.html.Element;
@@ -8,6 +8,11 @@ import js.html.ButtonElement;
 import js.html.DivElement;
 import js.Browser;
 import shared.ApiModels;
+import domain.core.AiModel;
+import domain.core.Conversation;
+import platform.js.HttpClientJs;
+import platform.js.LoggerJs;
+import platform.js.PlatformClockJs;
 using StringTools;
 
 class WebAppMain {
