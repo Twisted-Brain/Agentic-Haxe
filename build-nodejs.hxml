@@ -1,0 +1,5 @@
+-cp platform/core/js
+-cp domain
+-main platform.core.js.NodeServer
+-lib hxnodejs
+-js bin/server.js

@@ -1,7 +1,7 @@
 # JavaScript Frontend Target Only
 --js bin/frontend/webapp.js
---main frontend.WebAppMain
---class-path platform
+--main Main
+--class-path platform/frontend/js
 --class-path domain
---class-path wiring
+--lib react-next
 --dce full
