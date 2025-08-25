@@ -1,4 +1,4 @@
-package platform.js;
+package platform.core.js;
 
 import domain.ports.IClock;
 
@@ -13,15 +13,12 @@ class PlatformClockJs implements IClock {
         return js.lib.Date.now();
     }
     
-    public function now(): Date {
-        return Date.now();
+    public function nowSeconds(): Float {
+        return js.lib.Date.now() / 1000;
     }
     
-    public function delay(ms: Int): Promise<Void> {
-        return new Promise<Void>((resolve, reject) -> {
-            js.Browser.window.setTimeout(() -> {
-                resolve(null);
-            }, ms);
-        });
+    public function formatTimestamp(timestamp: Float): String {
+        var date = new js.lib.Date(timestamp);
+        return date.toISOString();
     }
 }

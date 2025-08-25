@@ -5,7 +5,6 @@
 #include <Sys.h>
 #endif
 
-HX_LOCAL_STACK_FRAME(_hx_pos_234d441af9864c45_59_getEnv,"Sys","getEnv",0xd9e05658,"Sys.getEnv","/usr/local/lib/haxe-4.3.7-std/cpp/_std/Sys.hx",59,0xa4baff6a)
 HX_LOCAL_STACK_FRAME(_hx_pos_234d441af9864c45_71_sleep,"Sys","sleep",0xfe70aad6,"Sys.sleep","/usr/local/lib/haxe-4.3.7-std/cpp/_std/Sys.hx",71,0xa4baff6a)
 HX_LOCAL_STACK_FRAME(_hx_pos_234d441af9864c45_87_systemName,"Sys","systemName",0xbea5b6bb,"Sys.systemName","/usr/local/lib/haxe-4.3.7-std/cpp/_std/Sys.hx",87,0xa4baff6a)
 HX_LOCAL_STACK_FRAME(_hx_pos_234d441af9864c45_113_time,"Sys","time",0xf7761b2e,"Sys.time","/usr/local/lib/haxe-4.3.7-std/cpp/_std/Sys.hx",113,0xa4baff6a)
@@ -26,18 +25,6 @@ Dynamic Sys_obj::__Create(::hx::DynamicArray inArgs)
 bool Sys_obj::_hx_isInstanceOf(int inClassId) {
 	return inClassId==(int)0x00000001 || inClassId==(int)0x7ee3a981;
 }
-
-::String Sys_obj::getEnv(::String s){
-            	HX_STACKFRAME(&_hx_pos_234d441af9864c45_59_getEnv)
-HXLINE(  60)		::String v = _hx_std_get_env(s);
-HXLINE(  61)		if (::hx::IsNull( v )) {
-HXLINE(  62)			return null();
-            		}
-HXLINE(  63)		return v;
-            	}
-
-
-STATIC_HX_DEFINE_DYNAMIC_FUNC1(Sys_obj,getEnv,return )
 
 void Sys_obj::sleep(Float seconds){
             	HX_STACKFRAME(&_hx_pos_234d441af9864c45_71_sleep)
@@ -77,9 +64,6 @@ bool Sys_obj::__GetStatic(const ::String &inName, Dynamic &outValue, ::hx::Prope
 	case 5:
 		if (HX_FIELD_EQ(inName,"sleep") ) { outValue = sleep_dyn(); return true; }
 		break;
-	case 6:
-		if (HX_FIELD_EQ(inName,"getEnv") ) { outValue = getEnv_dyn(); return true; }
-		break;
 	case 10:
 		if (HX_FIELD_EQ(inName,"systemName") ) { outValue = systemName_dyn(); return true; }
 	}
@@ -94,7 +78,6 @@ static ::hx::StaticInfo *Sys_obj_sStaticStorageInfo = 0;
 ::hx::Class Sys_obj::__mClass;
 
 static ::String Sys_obj_sStaticFields[] = {
-	HX_("getEnv",f7,3c,1c,a3),
 	HX_("sleep",17,bd,c4,7e),
 	HX_("systemName",da,d8,82,f7),
 	HX_("time",0d,cc,fc,4c),

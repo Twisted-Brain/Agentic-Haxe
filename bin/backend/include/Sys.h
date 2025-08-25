@@ -49,9 +49,6 @@ class HXCPP_CLASS_ATTRIBUTES Sys_obj : public ::hx::Object
 		bool _hx_isInstanceOf(int inClassId);
 		::String __ToString() const { return HX_("Sys",ed,64,3f,00); }
 
-		static ::String getEnv(::String s);
-		static ::Dynamic getEnv_dyn();
-
 		static void sleep(Float seconds);
 		static ::Dynamic sleep_dyn();
 

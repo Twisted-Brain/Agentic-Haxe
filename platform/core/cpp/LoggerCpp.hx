@@ -1,4 +1,4 @@
-package platform.cpp;
+package platform.core.cpp;
 
 import domain.ports.ILogger;
 import cpp.Lib;
@@ -13,7 +13,7 @@ class LoggerCpp implements ILogger {
     public function debug(message: String, ?context: Dynamic): Void {
         var logMessage = '[DEBUG] $message';
         if (context != null) {
-            logMessage += ' | Context: ${haxe.Json.stringify(context)}';
+            logMessage += ' | Context: $context';
         }
         trace(logMessage);
     }

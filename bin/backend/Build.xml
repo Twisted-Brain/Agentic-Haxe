@@ -2,16 +2,22 @@
 <set name="HXCPP_API_LEVEL" value="430" />
 <files id="haxe">
 <compilerflag value="-Iinclude"/>
-  <file name="src/sys/thread/_Thread/Thread_Impl_.cpp" >
-   <depend name="include/sys/thread/EventLoop.h"/>
-   <depend name="include/sys/thread/_Thread/HaxeThread.h"/>
-   <depend name="include/sys/thread/_Thread/Thread_Impl_.h"/>
+  <file name="src/wiring/DependencyContainer.cpp" >
+   <depend name="include/domain/ports/IClock.h"/>
+   <depend name="include/domain/ports/IHttp.h"/>
+   <depend name="include/domain/ports/ILogger.h"/>
+   <depend name="include/platform/core/cpp/HttpClientCpp.h"/>
+   <depend name="include/platform/core/cpp/LoggerCpp.h"/>
+   <depend name="include/platform/core/cpp/PlatformClockCpp.h"/>
+   <depend name="include/wiring/DependencyContainer.h"/>
   </file>
-  <file name="src/sys/thread/Lock.cpp" >
-   <depend name="include/sys/thread/Lock.h"/>
-  </file>
-  <file name="src/sys/thread/_EventLoop/RegularEvent.cpp" >
-   <depend name="include/sys/thread/_EventLoop/RegularEvent.h"/>
+  <file name="src/wiring/ApplicationBootstrap.cpp" >
+   <depend name="include/domain/ports/IClock.h"/>
+   <depend name="include/domain/ports/IHttp.h"/>
+   <depend name="include/domain/ports/ILogger.h"/>
+   <depend name="include/platform/core/cpp/LoggerCpp.h"/>
+   <depend name="include/wiring/ApplicationBootstrap.h"/>
+   <depend name="include/wiring/DependencyContainer.h"/>
   </file>
   <file name="src/sys/ssl/Socket.cpp" >
    <depend name="include/Std.h"/>
@@ -112,31 +118,27 @@
    <depend name="include/haxe/io/Path.h"/>
    <depend name="include/sys/FileSystem.h"/>
   </file>
-  <file name="src/shared/LlmModelHelper.cpp" >
-   <depend name="include/shared/LlmModel.h"/>
-   <depend name="include/shared/LlmModelHelper.h"/>
-  </file>
-  <file name="src/shared/LlmModel.cpp" >
-   <depend name="include/shared/LlmModel.h"/>
-  </file>
-  <file name="src/shared/GatewayConfig.cpp" >
-   <depend name="include/haxe/format/JsonPrinter.h"/>
-   <depend name="include/shared/GatewayConfig.h"/>
-  </file>
-  <file name="src/shared/LlmResponse.cpp" >
+  <file name="src/platform/core/cpp/PlatformClockCpp.cpp" >
    <depend name="include/Date.h"/>
-   <depend name="include/haxe/format/JsonParser.h"/>
-   <depend name="include/haxe/format/JsonPrinter.h"/>
-   <depend name="include/shared/LlmResponse.h"/>
+   <depend name="include/Sys.h"/>
+   <depend name="include/domain/ports/IClock.h"/>
+   <depend name="include/platform/core/cpp/PlatformClockCpp.h"/>
   </file>
-  <file name="src/shared/LlmRequest.cpp" >
-   <depend name="include/Date.h"/>
-   <depend name="include/haxe/format/JsonParser.h"/>
+  <file name="src/platform/core/cpp/LoggerCpp.cpp" >
+   <depend name="include/Std.h"/>
+   <depend name="include/cpp/Lib.h"/>
+   <depend name="include/domain/ports/ILogger.h"/>
+   <depend name="include/haxe/Log.h"/>
    <depend name="include/haxe/format/JsonPrinter.h"/>
-   <depend name="include/shared/LlmRequest.h"/>
+   <depend name="include/platform/core/cpp/LoggerCpp.h"/>
   </file>
-  <file name="src/shared/ApiModels.cpp" >
-   <depend name="include/shared/ApiModels.h"/>
+  <file name="src/platform/core/cpp/HttpClientCpp.cpp" >
+   <depend name="include/domain/ports/IHttp.h"/>
+   <depend name="include/haxe/IMap.h"/>
+   <depend name="include/haxe/ds/StringMap.h"/>
+   <depend name="include/haxe/http/HttpBase.h"/>
+   <depend name="include/platform/core/cpp/HttpClientCpp.h"/>
+   <depend name="include/sys/Http.h"/>
   </file>
   <file name="src/haxe/iterators/ArrayIterator.cpp" >
    <depend name="include/haxe/iterators/ArrayIterator.h"/>
@@ -184,6 +186,11 @@
    <depend name="include/haxe/io/Bytes.h"/>
    <depend name="include/haxe/io/BytesBuffer.h"/>
   </file>
+  <file name="src/haxe/io/Bytes.cpp" >
+   <depend name="include/haxe/io/Bytes.h"/>
+   <depend name="include/haxe/io/Encoding.h"/>
+   <depend name="include/haxe/io/Error.h"/>
+  </file>
   <file name="src/haxe/http/HttpBase.cpp" >
    <depend name="include/Reflect.h"/>
    <depend name="include/haxe/http/HttpBase.h"/>
@@ -202,12 +209,6 @@
    <depend name="include/haxe/ds/StringMap.h"/>
    <depend name="include/haxe/format/JsonPrinter.h"/>
   </file>
-  <file name="src/haxe/format/JsonParser.cpp" >
-   <depend name="include/Reflect.h"/>
-   <depend name="include/Std.h"/>
-   <depend name="include/StringBuf.h"/>
-   <depend name="include/haxe/format/JsonParser.h"/>
-  </file>
   <file name="src/haxe/exceptions/NotImplementedException.cpp" >
    <depend name="include/haxe/Exception.h"/>
    <depend name="include/haxe/exceptions/NotImplementedException.h"/>
@@ -222,11 +223,6 @@
    <depend name="include/haxe/ds/StringMap.h"/>
    <depend name="include/haxe/iterators/ArrayIterator.h"/>
   </file>
-  <file name="src/haxe/io/Bytes.cpp" >
-   <depend name="include/haxe/io/Bytes.h"/>
-   <depend name="include/haxe/io/Encoding.h"/>
-   <depend name="include/haxe/io/Error.h"/>
-  </file>
   <file name="src/haxe/ValueException.cpp" >
    <depend name="include/Std.h"/>
    <depend name="include/haxe/Exception.h"/>
@@ -234,13 +230,6 @@
   </file>
   <file name="src/haxe/NativeStackTrace.cpp" >
    <depend name="include/haxe/NativeStackTrace.h"/>
-  </file>
-  <file name="src/haxe/MainLoop.cpp" >
-   <depend name="include/haxe/MainEvent.h"/>
-   <depend name="include/haxe/MainLoop.h"/>
-  </file>
-  <file name="src/haxe/MainEvent.cpp" >
-   <depend name="include/haxe/MainEvent.h"/>
   </file>
   <file name="src/haxe/Log.cpp" >
    <depend name="include/Std.h"/>
@@ -250,24 +239,14 @@
    <depend name="include/haxe/Exception.h"/>
    <depend name="include/haxe/NativeStackTrace.h"/>
   </file>
-  <file name="src/haxe/EntryPoint.cpp" >
-   <depend name="include/haxe/EntryPoint.h"/>
+  <file name="src/domain/ports/ILogger.cpp" >
+   <depend name="include/domain/ports/ILogger.h"/>
   </file>
-  <file name="src/sys/thread/_Thread/HaxeThread.cpp" >
-   <depend name="include/sys/thread/EventLoop.h"/>
-   <depend name="include/sys/thread/Mutex.h"/>
-   <depend name="include/sys/thread/_Thread/HaxeThread.h"/>
+  <file name="src/domain/ports/IHttp.cpp" >
+   <depend name="include/domain/ports/IHttp.h"/>
   </file>
-  <file name="src/sys/thread/EventLoop.cpp" >
-   <depend name="include/Sys.h"/>
-   <depend name="include/haxe/MainLoop.h"/>
-   <depend name="include/sys/thread/EventLoop.h"/>
-   <depend name="include/sys/thread/Lock.h"/>
-   <depend name="include/sys/thread/Mutex.h"/>
-   <depend name="include/sys/thread/_EventLoop/RegularEvent.h"/>
-  </file>
-  <file name="src/sys/thread/Mutex.cpp" >
-   <depend name="include/sys/thread/Mutex.h"/>
+  <file name="src/domain/ports/IClock.cpp" >
+   <depend name="include/domain/ports/IClock.h"/>
   </file>
   <file name="src/cpp/Lib.cpp" >
    <depend name="include/cpp/Lib.h"/>
@@ -276,18 +255,12 @@
    <depend name="include/haxe/IMap.h"/>
   </file>
   <file name="src/backend/LlmGatewayMain.cpp" >
-   <depend name="include/Date.h"/>
-   <depend name="include/Std.h"/>
    <depend name="include/Sys.h"/>
    <depend name="include/backend/LlmGatewayMain.h"/>
-   <depend name="include/haxe/Log.h"/>
-   <depend name="include/haxe/format/JsonParser.h"/>
-   <depend name="include/haxe/format/JsonPrinter.h"/>
-   <depend name="include/haxe/http/HttpBase.h"/>
-   <depend name="include/shared/LlmRequest.h"/>
-   <depend name="include/shared/LlmResponse.h"/>
-   <depend name="include/sys/Http.h"/>
-   <depend name="include/sys/thread/Mutex.h"/>
+   <depend name="include/domain/ports/ILogger.h"/>
+   <depend name="include/platform/core/cpp/LoggerCpp.h"/>
+   <depend name="include/wiring/ApplicationBootstrap.h"/>
+   <depend name="include/wiring/DependencyContainer.h"/>
   </file>
   <file name="src/Type.cpp" >
    <depend name="include/Reflect.h"/>
@@ -324,18 +297,16 @@
    <depend name="include/Date.h"/>
   </file>
   <file name="src/__boot__.cpp" >
-   <depend name="include/shared/LlmModel.h"/>
    <depend name="include/haxe/io/Error.h"/>
    <depend name="include/haxe/io/Encoding.h"/>
    <depend name="include/ValueType.h"/>
+   <depend name="include/wiring/ApplicationBootstrap.h"/>
    <depend name="include/sys/ssl/Socket.h"/>
    <depend name="include/sys/ssl/Key.h"/>
    <depend name="include/sys/ssl/Certificate.h"/>
    <depend name="include/sys/net/Host.h"/>
    <depend name="include/sys/Http.h"/>
    <depend name="include/haxe/Log.h"/>
-   <depend name="include/sys/thread/_Thread/HaxeThread.h"/>
-   <depend name="include/backend/LlmGatewayMain.h"/>
   </file>
   <file name="src/__files__.cpp" if='HXCPP_DEBUGGER'>
   </file>
@@ -347,14 +318,12 @@
 <compilerflag value="-Iinclude"/>
   <file name="src/__lib__.cpp" >
    <depend name="include/backend/LlmGatewayMain.h"/>
-   <depend name="include/sys/thread/_Thread/Thread_Impl_.h"/>
   </file>
 </files>
 <files id="__main__">
 <compilerflag value="-Iinclude"/>
   <file name="src/__main__.cpp" >
    <depend name="include/backend/LlmGatewayMain.h"/>
-   <depend name="include/sys/thread/_Thread/Thread_Impl_.h"/>
   </file>
 </files>
 <files id="__resources__">

@@ -7,9 +7,8 @@
 #endif
 
 HX_DECLARE_CLASS1(backend,LlmGatewayMain)
-HX_DECLARE_CLASS1(shared,LlmRequest)
-HX_DECLARE_CLASS1(shared,LlmResponse)
-HX_DECLARE_CLASS2(sys,thread,Mutex)
+HX_DECLARE_CLASS2(domain,ports,ILogger)
+HX_DECLARE_CLASS3(platform,core,cpp,LoggerCpp)
 
 namespace backend{
 
@@ -54,35 +53,12 @@ class HXCPP_CLASS_ATTRIBUTES LlmGatewayMain_obj : public ::hx::Object
 		bool _hx_isInstanceOf(int inClassId);
 		::String __ToString() const { return HX_("LlmGatewayMain",90,ed,20,f3); }
 
-		static void __boot();
-		static ::String openRouterApiKey;
-		static ::String openRouterBaseUrl;
-		static ::String defaultModel;
-		static bool isRunning;
-		static  ::sys::thread::Mutex requestMutex;
+		static  ::platform::core::cpp::LoggerCpp logger;
 		static void main();
 		static ::Dynamic main_dyn();
 
-		static void initializeGateway();
-		static ::Dynamic initializeGateway_dyn();
-
-		static void startGatewayServer();
-		static ::Dynamic startGatewayServer_dyn();
-
-		static void processIncomingRequests();
-		static ::Dynamic processIncomingRequests_dyn();
-
-		static  ::shared::LlmResponse processLlmRequest( ::shared::LlmRequest request);
-		static ::Dynamic processLlmRequest_dyn();
-
-		static  ::shared::LlmResponse callOpenRouterApi( ::shared::LlmRequest request);
-		static ::Dynamic callOpenRouterApi_dyn();
-
-		static  ::shared::LlmResponse createDemoResponse( ::shared::LlmRequest request);
-		static ::Dynamic createDemoResponse_dyn();
-
-		static void shutdown();
-		static ::Dynamic shutdown_dyn();
+		static void startHttpServer();
+		static ::Dynamic startHttpServer_dyn();
 
 };
 

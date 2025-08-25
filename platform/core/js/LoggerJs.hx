@@ -1,4 +1,4 @@
-package platform.js;
+package platform.core.js;
 
 import domain.ports.ILogger;
 

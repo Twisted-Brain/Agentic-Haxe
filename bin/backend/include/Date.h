@@ -58,16 +58,10 @@ HXDLIN(  26)		( ( ::Date)(__this) )->mSeconds =  ::__hxcpp_new_date(year,month,d
 		bool _hx_isInstanceOf(int inClassId);
 		::String __ToString() const { return HX_("Date",4e,82,3c,2d); }
 
-		static  ::Date now();
-		static ::Dynamic now_dyn();
-
 		static  ::Date fromTime(Float t);
 		static ::Dynamic fromTime_dyn();
 
 		Float mSeconds;
-		Float getTime();
-		::Dynamic getTime_dyn();
-
 		virtual ::String toString();
 		::Dynamic toString_dyn();
 

@@ -55,8 +55,8 @@ class HXCPP_CLASS_ATTRIBUTES HttpBase_obj : public ::hx::Object
 		::Array< ::Dynamic> params;
 		 ::Dynamic emptyOnData;
 		Dynamic emptyOnData_dyn() { return emptyOnData;}
-		void addHeader(::String header,::String value);
-		::Dynamic addHeader_dyn();
+		void setHeader(::String name,::String value);
+		::Dynamic setHeader_dyn();
 
 		void setPostData(::String data);
 		::Dynamic setPostData_dyn();

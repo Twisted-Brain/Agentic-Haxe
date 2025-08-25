@@ -5,6 +5,7 @@
 #include <cpp/Lib.h>
 #endif
 
+HX_LOCAL_STACK_FRAME(_hx_pos_712c64312c112a83_143_println,"cpp.Lib","println",0xca016ddb,"cpp.Lib.println","/usr/local/lib/haxe-4.3.7-std/cpp/Lib.hx",143,0x385adc4b)
 namespace cpp{
 
 void Lib_obj::__construct() { }
@@ -24,9 +25,26 @@ bool Lib_obj::_hx_isInstanceOf(int inClassId) {
 	return inClassId==(int)0x00000001 || inClassId==(int)0x561f6486;
 }
 
+void Lib_obj::println( ::Dynamic v){
+            	HX_STACKFRAME(&_hx_pos_712c64312c112a83_143_println)
+HXDLIN( 143)		 ::__hxcpp_println(v);
+            	}
+
+
+STATIC_HX_DEFINE_DYNAMIC_FUNC1(Lib_obj,println,(void))
+
 
 Lib_obj::Lib_obj()
 {
+}
+
+bool Lib_obj::__GetStatic(const ::String &inName, Dynamic &outValue, ::hx::PropertyAccess inCallProp)
+{
+	switch(inName.length) {
+	case 7:
+		if (HX_FIELD_EQ(inName,"println") ) { outValue = println_dyn(); return true; }
+	}
+	return false;
 }
 
 #ifdef HXCPP_SCRIPTABLE
@@ -35,6 +53,11 @@ static ::hx::StaticInfo *Lib_obj_sStaticStorageInfo = 0;
 #endif
 
 ::hx::Class Lib_obj::__mClass;
+
+static ::String Lib_obj_sStaticFields[] = {
+	HX_("println",ef,db,33,84),
+	::String(null())
+};
 
 void Lib_obj::__register()
 {
@@ -45,9 +68,9 @@ void Lib_obj::__register()
 	__mClass->mSuper = &super::__SGetClass();
 	__mClass->mConstructEmpty = &__CreateEmpty;
 	__mClass->mConstructArgs = &__Create;
-	__mClass->mGetStaticField = &::hx::Class_obj::GetNoStaticField;
+	__mClass->mGetStaticField = &Lib_obj::__GetStatic;
 	__mClass->mSetStaticField = &::hx::Class_obj::SetNoStaticField;
-	__mClass->mStatics = ::hx::Class_obj::dupFunctions(0 /* sStaticFields */);
+	__mClass->mStatics = ::hx::Class_obj::dupFunctions(Lib_obj_sStaticFields);
 	__mClass->mMembers = ::hx::Class_obj::dupFunctions(0 /* sMemberFields */);
 	__mClass->mCanCast = ::hx::TCanCast< Lib_obj >;
 #ifdef HXCPP_SCRIPTABLE

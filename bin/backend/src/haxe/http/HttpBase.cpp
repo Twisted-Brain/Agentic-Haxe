@@ -15,7 +15,7 @@
 #endif
 
 HX_DEFINE_STACK_FRAME(_hx_pos_f15d12b52422efd5_71_new,"haxe.http.HttpBase","new",0x98384fa9,"haxe.http.HttpBase.new","/usr/local/lib/haxe-4.3.7-std/haxe/http/HttpBase.hx",71,0x96b80061)
-HX_LOCAL_STACK_FRAME(_hx_pos_f15d12b52422efd5_99_addHeader,"haxe.http.HttpBase","addHeader",0x5190da97,"haxe.http.HttpBase.addHeader","/usr/local/lib/haxe-4.3.7-std/haxe/http/HttpBase.hx",99,0x96b80061)
+HX_LOCAL_STACK_FRAME(_hx_pos_f15d12b52422efd5_85_setHeader,"haxe.http.HttpBase","setHeader",0xf9141ad8,"haxe.http.HttpBase.setHeader","/usr/local/lib/haxe-4.3.7-std/haxe/http/HttpBase.hx",85,0x96b80061)
 HX_LOCAL_STACK_FRAME(_hx_pos_f15d12b52422efd5_142_setPostData,"haxe.http.HttpBase","setPostData",0x36d5f0b5,"haxe.http.HttpBase.setPostData","/usr/local/lib/haxe-4.3.7-std/haxe/http/HttpBase.hx",142,0x96b80061)
 HX_LOCAL_STACK_FRAME(_hx_pos_f15d12b52422efd5_196___default_onData,"haxe.http.HttpBase","__default_onData",0xb2f8141e,"haxe.http.HttpBase.__default_onData","/usr/local/lib/haxe-4.3.7-std/haxe/http/HttpBase.hx",196,0x96b80061)
 HX_LOCAL_STACK_FRAME(_hx_pos_f15d12b52422efd5_205___default_onBytes,"haxe.http.HttpBase","__default_onBytes",0xcf297ff7,"haxe.http.HttpBase.__default_onBytes","/usr/local/lib/haxe-4.3.7-std/haxe/http/HttpBase.hx",205,0x96b80061)
@@ -50,15 +50,29 @@ bool HttpBase_obj::_hx_isInstanceOf(int inClassId) {
 	return inClassId==(int)0x00000001 || inClassId==(int)0x10c0921f;
 }
 
-void HttpBase_obj::addHeader(::String header,::String value){
-            	HX_STACKFRAME(&_hx_pos_f15d12b52422efd5_99_addHeader)
-HXDLIN(  99)		this->headers->push( ::Dynamic(::hx::Anon_obj::Create(2)
+void HttpBase_obj::setHeader(::String name,::String value){
+            	HX_STACKFRAME(&_hx_pos_f15d12b52422efd5_85_setHeader)
+HXLINE(  86)		{
+HXLINE(  86)			int _g = 0;
+HXDLIN(  86)			int _g1 = this->headers->length;
+HXDLIN(  86)			while((_g < _g1)){
+HXLINE(  86)				_g = (_g + 1);
+HXDLIN(  86)				int i = (_g - 1);
+HXLINE(  87)				if (::hx::IsEq( this->headers->__get(i)->__Field(HX_("name",4b,72,ff,48),::hx::paccDynamic),name )) {
+HXLINE(  88)					this->headers[i] =  ::Dynamic(::hx::Anon_obj::Create(2)
+            						->setFixed(0,HX_("value",71,7f,b8,31),value)
+            						->setFixed(1,HX_("name",4b,72,ff,48),name));
+HXLINE(  89)					return;
+            				}
+            			}
+            		}
+HXLINE(  92)		this->headers->push( ::Dynamic(::hx::Anon_obj::Create(2)
             			->setFixed(0,HX_("value",71,7f,b8,31),value)
-            			->setFixed(1,HX_("name",4b,72,ff,48),header)));
+            			->setFixed(1,HX_("name",4b,72,ff,48),name)));
             	}
 
 
-HX_DEFINE_DYNAMIC_FUNC2(HttpBase_obj,addHeader,(void))
+HX_DEFINE_DYNAMIC_FUNC2(HttpBase_obj,setHeader,(void))
 
 void HttpBase_obj::setPostData(::String data){
             	HX_STACKFRAME(&_hx_pos_f15d12b52422efd5_142_setPostData)
@@ -222,7 +236,7 @@ void HttpBase_obj::__Visit(HX_VISIT_PARAMS)
 		break;
 	case 9:
 		if (HX_FIELD_EQ(inName,"postBytes") ) { return ::hx::Val( postBytes ); }
-		if (HX_FIELD_EQ(inName,"addHeader") ) { return ::hx::Val( addHeader_dyn() ); }
+		if (HX_FIELD_EQ(inName,"setHeader") ) { return ::hx::Val( setHeader_dyn() ); }
 		if (HX_FIELD_EQ(inName,"hasOnData") ) { return ::hx::Val( hasOnData_dyn() ); }
 		break;
 	case 11:
@@ -317,7 +331,7 @@ static ::String HttpBase_obj_sMemberFields[] = {
 	HX_("headers",46,52,08,63),
 	HX_("params",46,fb,7a,ed),
 	HX_("emptyOnData",56,f5,15,ad),
-	HX_("addHeader",8e,3e,24,b5),
+	HX_("setHeader",cf,7e,a7,5c),
 	HX_("setPostData",6c,80,03,31),
 	HX_("onData",e9,5e,ed,e4),
 	HX_("onBytes",cc,a6,d5,53),

@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="../assets/logo.png" alt="Agentic Haxe Logo" width="200" height="200">
+</div>
+
 # PoC 08: Haxe Neko Target for Rapid AI Prototyping
 
 ## Overview

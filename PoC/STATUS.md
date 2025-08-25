@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="../assets/logo.png" alt="Agentic Haxe Logo" width="150" height="150">
+</div>
+
 # PoC Implementation Status Overview
 
 ## Project Structure Status ✅

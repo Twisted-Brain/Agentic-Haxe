@@ -45,9 +45,13 @@ class HXCPP_CLASS_ATTRIBUTES Lib_obj : public ::hx::Object
 		//~Lib_obj();
 
 		HX_DO_RTTI_ALL;
+		static bool __GetStatic(const ::String &inString, Dynamic &outValue, ::hx::PropertyAccess inCallProp);
 		static void __register();
 		bool _hx_isInstanceOf(int inClassId);
 		::String __ToString() const { return HX_("Lib",25,07,3a,00); }
+
+		static void println( ::Dynamic v);
+		static ::Dynamic println_dyn();
 
 };
 
