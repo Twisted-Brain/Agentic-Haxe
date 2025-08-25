@@ -1,5 +1,9 @@
 # Source Architecture Plan for Haxe AI Project
 
+<div align="center">
+  <img src="assets/logo.png" alt="Haxe Source Architecture Logo" width="120" height="120">
+</div>
+
 ## Overview
 This document outlines the planned restructuring of `/Users/lpm/Repo/Agentic-Haxe/src` to implement the architectural paradigms defined in `ARCHITECTURE_PARADIGMS.md`.
 

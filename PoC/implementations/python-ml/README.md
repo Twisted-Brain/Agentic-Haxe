@@ -1,5 +1,9 @@
 # PoC 01: Python ML Integration Implementation
 
+<div align="center">
+  <img src="../../../assets/logo.png" alt="Python ML Integration Logo" width="100" height="100">
+</div>
+
 ## Overview
 Haxe Python target implementation for direct ML model integration with NumPy/TensorFlow interoperability.
 

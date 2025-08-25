@@ -1,5 +1,9 @@
 # PoC 02: WebAssembly Browser AI Implementation
 
+<div align="center">
+  <img src="../../../assets/logo.png" alt="WebAssembly Browser AI Logo" width="100" height="100">
+</div>
+
 ## Overview
 Haxe WebAssembly target for browser-based AI inference without JavaScript overhead.
 

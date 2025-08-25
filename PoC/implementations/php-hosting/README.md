@@ -1,5 +1,9 @@
 # PoC 03: PHP Traditional Hosting Implementation
 
+<div align="center">
+  <img src="../../../assets/logo.png" alt="PHP Traditional Hosting Logo" width="100" height="100">
+</div>
+
 ## Overview
 Haxe PHP target for traditional webhosting and VPS deployment with existing PHP infrastructure integration.
 
