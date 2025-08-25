@@ -1,7 +1,6 @@
 -cp platform/core/cpp
 -cp domain
 -cp wiring
--lib hx_webserver
 -main platform.core.cpp.Gateway
 -cpp bin/cpp
 -D HXCPP_M64
