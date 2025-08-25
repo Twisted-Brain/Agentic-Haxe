@@ -1,114 +1,70 @@
 # Wiring - Dependency Injection System
 
+![Agentic Haxe Logo](/assets/logo.png)
+
 This directory contains the **typedef-bindings** and dependency injection framework for the hexagonal architecture.
 
 ## Overview
 
-The wiring system provides compile-time dependency injection using Haxe's typedef system. This eliminates runtime overhead while maintaining clean separation between domain logic and platform-specific implementations.
-
-## Architecture
-
-```
-wiring/
-├── HttpClient.hx          # HTTP client typedef bindings
-├── Logger.hx              # Logger typedef bindings  
-├── PlatformClock.hx       # Clock typedef bindings
-├── DependencyContainer.hx # Central dependency container
-├── ApplicationBootstrap.hx # Application initialization
-└── README.md              # This documentation
-```
+The wiring system provides compile-time dependency injection using Haxe's typedef system. This eliminates runtime overhead while maintaining a clean separation between domain logic and platform-specific implementations. The goal is to define abstract interfaces in the `domain` layer and "wire" them to concrete, platform-specific implementations at compile time.
 
 ## How It Works
 
 ### 1. Typedef Bindings
 
-Each typedef file maps a generic interface to platform-specific implementations:
+The core of the wiring system is conditional compilation. For each abstract port (interface) defined in `domain/ports/`, we will create a corresponding `typedef` in the `wiring` directory. This `typedef` will resolve to a specific implementation from the `platform` directory based on the compilation target.
+
+**Conceptual Example:**
+
+A file like `wiring/HttpClient.hx` would contain:
 
 ```haxe
-// HttpClient.hx
+// wiring/HttpClient.hx
 #if js
 typedef HttpClient = platform.js.HttpClientJs;
 #elseif cpp
 typedef HttpClient = platform.cpp.HttpClientCpp;
+#else
+#error "Unsupported platform for HttpClient"
 #end
 ```
 
-### 2. Dependency Container
+### 2. Dependency Container (Future Goal)
 
-`DependencyContainer` provides lazy initialization and clean access to all dependencies:
+A central `DependencyContainer` can be implemented to provide lazy initialization and clean access to all dependencies. This would allow any part of the application to request a dependency without knowing its concrete implementation.
 
 ```haxe
+// Conceptual usage
 var httpClient = DependencyContainer.getHttpClient();
 var logger = DependencyContainer.getLogger();
 ```
 
-### 3. Application Bootstrap
+### 3. Application Bootstrap (Future Goal)
 
-`ApplicationBootstrap` handles proper initialization sequence:
+An `ApplicationBootstrap` class will handle the proper initialization and shutdown sequence for the application, ensuring all dependencies are correctly configured before the main application logic runs.
 
 ```haxe
+// Conceptual usage
 ApplicationBootstrap.initialize();
 // Your application code here
 ApplicationBootstrap.shutdown();
 ```
 
-## Usage Examples
-
-### Basic Usage
-
-```haxe
-import wiring.ApplicationBootstrap;
-import wiring.DependencyContainer;
-
-class Main {
-    static function main() {
-        // Initialize application
-        ApplicationBootstrap.initialize();
-        
-        // Use dependencies
-        var logger = DependencyContainer.getLogger();
-        logger.info("Application started");
-        
-        var httpClient = DependencyContainer.getHttpClient();
-        // Use HTTP client...
-        
-        // Shutdown gracefully
-        ApplicationBootstrap.shutdown();
-    }
-}
-```
-
-### Testing with Dependency Injection
-
-```haxe
-// In your test setup
-DependencyContainer.reset();
-DependencyContainer.inject(
-    httpClient: new MockHttpClient(),
-    logger: new MockLogger()
-);
-
-// Run your tests...
-
-// Cleanup
-DependencyContainer.reset();
-```
-
 ## Benefits
 
-1. **Zero Runtime Overhead** - All binding happens at compile time
-2. **Clean Domain Code** - No platform-specific imports in domain layer
-3. **Easy Testing** - Mock dependencies can be injected for testing
-4. **Type Safety** - Full compile-time type checking
-5. **Platform Agnostic** - Same code works across all Haxe targets
+1.  **Zero Runtime Overhead** - All binding happens at compile time.
+2.  **Clean Domain Code** - No platform-specific imports in the domain layer.
+3.  **Easy Testing** - Mock dependencies can be injected for testing.
+4.  **Type Safety** - Full compile-time type checking.
+5.  **Platform Agnostic** - The same domain code works across all Haxe targets.
 
 ## Adding New Dependencies
 
-1. Create interface in `domain/ports/`
-2. Implement adapters in `platform/*/`
-3. Create typedef binding in `wiring/`
-4. Add to `DependencyContainer`
-5. Update `ApplicationBootstrap` if needed
+1.  Create an interface in `domain/ports/`.
+2.  Implement the corresponding adapters in `platform/*/`.
+3.  Create a `typedef` binding in the `wiring/` directory.
+4.  (Optional) Add the new dependency to the `DependencyContainer`.
+5.  (Optional) Update the `ApplicationBootstrap` if needed.
 
 ## Supported Platforms
 
