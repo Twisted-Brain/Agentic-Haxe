@@ -101,3 +101,13 @@ Thumbs.db
 .env.prod
 .env.secret
 .env*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-wheel-metadata/
