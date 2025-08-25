@@ -1,5 +1,9 @@
 # Haxe LLM Gateway PoC
 
+<div align="center">
+  <img src="assets/logo.png" alt="Haxe LLM Gateway Logo" width="200" height="200">
+</div>
+
 Et Proof of Concept projekt der demonstrerer hvordan Haxe kan bruges til at bygge både frontend og backend applikationer i et enkelt projekt.
 
 ## 🎯 Projektbeskrivelse
