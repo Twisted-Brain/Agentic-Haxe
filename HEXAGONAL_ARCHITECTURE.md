@@ -1,5 +1,9 @@
 # Hexagonal Architecture for Haxe AI Project
 
+<div align="center">
+  <img src="assets/logo.png" alt="Haxe Hexagonal Architecture Logo" width="120" height="120">
+</div>
+
 ## Overview
 This document defines the Hexagonal Architecture (Ports and Adapters) implementation for our Haxe AI project, ensuring clean separation of concerns, testability, and platform independence.
 

@@ -1,5 +1,9 @@
 # Shared Core Libraries for Haxe AI Project
 
+<div align="center">
+  <img src="assets/logo.png" alt="Haxe Shared Core Libraries Logo" width="120" height="120">
+</div>
+
 ## Overview
 This document defines the shared core libraries that form the foundation of our Hexagonal Architecture across all Haxe targets and PoCs. These super-libraries provide consistent functionality while maintaining platform independence.
 

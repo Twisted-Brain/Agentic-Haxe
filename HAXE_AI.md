@@ -1,5 +1,9 @@
 # Haxe as an AI Programming Language
 
+<div align="center">
+  <img src="assets/logo.png" alt="Haxe AI Programming Logo" width="120" height="120">
+</div>
+
 ## Overview
 
 This document explores Haxe's capabilities as a programming language for AI development, based on our Proof of Concept (PoC) implementation of an LLM Gateway system.

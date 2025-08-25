@@ -1,5 +1,9 @@
 # Haxe AI Proof of Concepts (PoC) Structure
 
+<div align="center">
+  <img src="../assets/logo.png" alt="Haxe AI PoC Logo" width="150" height="150">
+</div>
+
 This directory contains multiple Proof of Concept implementations demonstrating Haxe's capabilities across different server targets and deployment platforms for AI applications.
 
 ## Project Structure

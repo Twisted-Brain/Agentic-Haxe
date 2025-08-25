@@ -1,5 +1,9 @@
 # Architecture Paradigms for Haxe AI PoCs
 
+<div align="center">
+  <img src="assets/logo.png" alt="Haxe AI Architecture Logo" width="120" height="120">
+</div>
+
 ## Overview
 This document outlines various architectural paradigms that should be considered for our Haxe AI Proof of Concepts, beyond the Hexagonal Architecture already implemented.
 
