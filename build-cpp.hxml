@@ -1,6 +1,0 @@
--cp platform/core/cpp
--cp domain
--cp wiring
--main platform.core.cpp.Gateway
--cpp bin/cpp
--D HXCPP_M64

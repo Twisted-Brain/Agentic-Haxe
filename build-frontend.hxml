@@ -1,7 +1,0 @@
-# JavaScript Frontend Target Only
---js bin/frontend/webapp.js
---main Main
---class-path platform/frontend/js
---class-path domain
---lib react-next
---dce full
