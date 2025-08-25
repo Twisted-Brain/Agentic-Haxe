@@ -132,9 +132,8 @@ class Conversation {
         conversation.isActive = data.isActive;
         
         if (data.metadata != null) {
-            var metadataObj = cast(data.metadata, Dynamic);
-            for (field in Reflect.fields(metadataObj)) {
-                conversation.metadata.set(field, Reflect.field(metadataObj, field));
+            for (field in Reflect.fields(data.metadata)) {
+                conversation.metadata.set(field, Reflect.field(data.metadata, field));
             }
         }
         
@@ -207,9 +206,8 @@ class ConversationMessage {
         );
         
         if (data.metadata != null) {
-            var metadataObj = cast(data.metadata, Dynamic);
-            for (field in Reflect.fields(metadataObj)) {
-                message.metadata.set(field, Reflect.field(metadataObj, field));
+            for (field in Reflect.fields(data.metadata)) {
+                message.metadata.set(field, Reflect.field(data.metadata, field));
             }
         }
         

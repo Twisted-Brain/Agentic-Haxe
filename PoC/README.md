@@ -6,12 +6,15 @@
 
 This directory contains multiple Proof of Concept implementations demonstrating Haxe's capabilities across different server targets and deployment platforms for AI applications.
 
+**Key Concept**: PoC 00 establishes the foundation with shared components that are reused across all other PoCs, proving Haxe's "Write Once, Deploy Everywhere" philosophy.
+
 ## Project Structure
 
 ```
 PoC/
 ├── README.md                           # This file
-├── 01-Python-ML-Integration.md         # Python target for ML integration
+├── 00-Baseline-NodeJS-CPP.md          # FOUNDATION: Node.js/C++ baseline with shared components
+├── 01-Python-ML-Integration.md         # Python target (reuses 80%+ from PoC 00)
 ├── 02-WebAssembly-Browser-AI.md        # WASM target for browser AI
 ├── 03-PHP-Traditional-Hosting.md       # PHP target for traditional hosting
 ├── 04-Java-Enterprise-Cloud.md         # Java target for enterprise cloud
@@ -20,7 +23,18 @@ PoC/
 ├── 07-Performance-Benchmarks.md        # Performance comparison across targets
 ├── 08-Neko-Rapid-Prototyping.md       # Neko target for rapid prototyping
 ├── implementations/                     # Actual PoC implementations
-│   ├── python-ml/                      # PoC 01 implementation
+│   ├── baseline-nodejs-cpp/            # PoC 00 implementation (FOUNDATION)
+│   │   ├── src/
+│   │   │   ├── shared/                  # Shared API models and types
+│   │   │   ├── frontend/                # Universal frontend components
+│   │   │   └── platform/                # Node.js and C++ backends
+│   │   ├── build/
+│   │   ├── tests/
+│   │   ├── package.json
+│   │   ├── build-nodejs.hxml
+│   │   ├── build-cpp.hxml
+│   │   └── README.md
+│   ├── python-ml/                      # PoC 01 implementation (reuses PoC 00)
 │   │   ├── src/
 │   │   ├── build/
 │   │   ├── tests/
@@ -77,52 +91,91 @@ PoC/
 
 ## PoC Overview
 
-### 01. Python ML Integration
-- **Target Platform**: VPS + Cloud (AWS/GCP/Azure)
-- **Focus**: Direct ML model integration with NumPy/TensorFlow
-- **Deployment**: Docker containers, Python virtual environments
+### 00. Baseline Node.js/C++ Implementation (FOUNDATION)
+- **Target Platform**: Node.js + C++ (dual backend)
+- **Focus**: Establish reusable foundation for all other PoCs
+- **Key Components**: 
+  - ✅ Shared API Models (`LlmRequest`, `LlmResponse`)
+  - ✅ Universal Frontend (platform-agnostic JavaScript)
+  - ✅ Configuration System (`FrontendConfig`)
+  - ✅ Build System & Docker Support
+- **Deployment**: Local development, Docker containers
+- **Status**: **Critical foundation - all other PoCs depend on this**
 
-### 02. WebAssembly Browser AI
+### 01. Python ML Integration (Reuses PoC 00 Foundation)
+- **Target Platform**: VPS + Cloud (AWS/GCP/Azure)
+- **Focus**: OpenRouter integration + Python ML libraries
+- **Reuses from PoC 00**: Frontend (100%), API models (100%), configuration system (100%)
+- **New Components**: Python backend, ML library integration
+- **Deployment**: Docker containers, Python virtual environments
+- **Code Reuse**: 80%+ from PoC 00 foundation
+
+### 02. WebAssembly Browser AI (Reuses PoC 00 Foundation)
 - **Target Platform**: Cloudflare Pages + GitHub Pages
 - **Focus**: Browser-based AI inference without JavaScript overhead
+- **Reuses from PoC 00**: Frontend (100%), API models (100%), configuration system (100%)
+- **New Components**: WASM backend compilation
 - **Deployment**: Static site hosting, CDN distribution
+- **Code Reuse**: 80%+ from PoC 00 foundation
 
-### 03. PHP Traditional Hosting
+### 03. PHP Traditional Hosting (Reuses PoC 00 Foundation)
 - **Target Platform**: Traditional webhosting (Netgiganten) + VPS
 - **Focus**: Integration with existing PHP infrastructure
+- **Reuses from PoC 00**: Frontend (100%), API models (100%), configuration system (100%)
+- **New Components**: PHP backend implementation
 - **Deployment**: cPanel, FTP, traditional LAMP stack
+- **Code Reuse**: 80%+ from PoC 00 foundation
 
-### 04. Java Enterprise Cloud
+### 04. Java Enterprise Cloud (Reuses PoC 00 Foundation)
 - **Target Platform**: Enterprise Cloud (AWS/GCP/Azure)
 - **Focus**: Spring Boot integration, JVM performance
+- **Reuses from PoC 00**: Frontend (100%), API models (100%), configuration system (100%)
+- **New Components**: Java backend, Spring Boot integration
 - **Deployment**: Kubernetes, Docker, enterprise CI/CD
+- **Code Reuse**: 80%+ from PoC 00 foundation
 
-### 05. C# Azure Microservices
+### 05. C# Azure Microservices (Reuses PoC 00 Foundation)
 - **Target Platform**: Azure Cloud
 - **Focus**: .NET microservices, Azure integration
+- **Reuses from PoC 00**: Frontend (100%), API models (100%), configuration system (100%)
+- **New Components**: C# backend, Azure integration
 - **Deployment**: Azure DevOps, Azure Container Instances
+- **Code Reuse**: 80%+ from PoC 00 foundation
 
-### 06. Multi-Target Universal Deploy
+### 06. Multi-Target Universal Deploy (Orchestrates All PoCs)
 - **Target Platform**: All platforms simultaneously
-- **Focus**: Universal deployment system
+- **Focus**: Universal deployment system using PoC 00 foundation
+- **Reuses from PoC 00**: All shared components across multiple backends
+- **New Components**: Orchestration and deployment automation
 - **Deployment**: GitHub Actions, multi-platform CI/CD
+- **Code Reuse**: Maximizes reuse from PoC 00 across all platforms
 
 ### 07. Performance Benchmarks
 - **Target Platform**: VPS + Multi-cloud
 - **Focus**: Performance comparison across all targets
 - **Deployment**: Automated benchmarking infrastructure
 
-### 08. Neko Rapid Prototyping
+### 08. Neko Rapid Prototyping (Reuses PoC 00 Foundation)
 - **Target Platform**: Local development + VPS
 - **Focus**: Ultra-fast development cycles
+- **Reuses from PoC 00**: Frontend (100%), API models (100%), configuration system (100%)
+- **New Components**: Neko backend implementation
 - **Deployment**: Lightweight containers, development servers
+- **Code Reuse**: 80%+ from PoC 00 foundation
 
 ## Getting Started
 
-1. Choose a PoC based on your target platform and requirements
+### Step 1: Implement Foundation (Required)
+1. **Start with PoC 00 (Baseline)** - This is mandatory as all other PoCs depend on it
+2. Navigate to `implementations/baseline-nodejs-cpp/`
+3. Follow the setup instructions to build the foundation
+4. Verify both Node.js and C++ backends work with the same frontend
+
+### Step 2: Choose Additional PoCs
+1. Choose additional PoCs based on your target platform and requirements
 2. Navigate to the corresponding implementation directory
 3. Follow the README.md in each implementation for setup instructions
-4. Each PoC is self-contained with its own build system and dependencies
+4. Each PoC reuses 80%+ of the PoC 00 foundation with platform-specific backends
 
 ## Development Workflow
 
@@ -132,13 +185,16 @@ PoC/
 4. **Deployment**: Follow platform-specific deployment guides
 5. **Benchmarking**: Use PoC 07 to compare performance across implementations
 
-## Shared Components
+## Shared Components (Established by PoC 00)
 
-All PoCs share common components from the `shared/` directory:
+All PoCs share common components from the PoC 00 foundation:
+- **API Models**: `LlmRequest`, `LlmResponse`, `LlmModel` classes (from PoC 00)
+- **Frontend Components**: Universal chat interface (from PoC 00)
+- **Configuration System**: `FrontendConfig` with auto-detection (from PoC 00)
+- **Build System**: Multi-platform compilation setup (from PoC 00)
 - **AI Core**: Common AI functionality and algorithms
 - **API Interfaces**: Standardized API definitions
 - **Utils**: Utility functions and helpers
-- **Types**: Shared type definitions and data structures
 
 ## Contributing
 
@@ -151,8 +207,19 @@ When adding new PoCs or modifying existing ones:
 
 ## Next Steps
 
-1. Create implementation directories for each PoC
-2. Set up shared component library
-3. Implement core AI functionality
-4. Build platform-specific deployments
-5. Establish benchmarking and testing infrastructure
+### Phase 1: Foundation (Critical)
+1. **Implement PoC 00 (Baseline)** - Highest priority
+2. Build shared API models and universal frontend
+3. Implement Node.js and C++ backends
+4. Validate cross-platform reuse patterns
+
+### Phase 2: Prove Reusability
+1. Implement PoC 01 (Python) - Demonstrate 80%+ code reuse
+2. Implement PoC 08 (Neko) - Rapid prototyping validation
+3. Document reuse patterns and benefits
+
+### Phase 3: Scale Across Platforms
+1. Implement remaining platform-specific PoCs
+2. Build PoC 06 (Multi-Target) orchestration
+3. Establish PoC 07 (Benchmarks) infrastructure
+4. Measure and document code reuse percentages

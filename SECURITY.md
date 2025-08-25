@@ -8,14 +8,14 @@
 
 ### ⚠️ CRITICAL: Never Commit API Keys!
 
-- **NEVER** commit `.env` files containing real API keys
-- Use `.env.template` as a reference for required variables
-- Copy `.env.template` to `.env` and fill in your actual values
-- The `.env` file is automatically ignored by git
+- **NEVER** commit API keys to the repository
+- Use Mac environment variables for secure configuration
+- Store sensitive keys in your shell profile (~/.zshrc)
+- Environment variables are not tracked by git
 
 ### Setup Instructions
 
-#### Option 1: Global Environment Variables (Recommended)
+#### Mac Environment Variables (Recommended)
 
 1. Add to your shell profile (`~/.zshrc` or `~/.bashrc`):
    ```bash
@@ -30,33 +30,16 @@
    source ~/.zshrc
    ```
 
-#### Option 2: Global .env File
+#### Alternative: Temporary Session Variables
 
-1. Create a global environment file:
-   ```bash
-   cp .env.template ~/.env
-   ```
+For testing purposes, you can set variables for the current session:
+```bash
+export OPENROUTER_API_KEY="sk-or-v1-your-actual-key"
+export OPENROUTER_BASE_URL="https://openrouter.ai/api/v1"
+export LLM_MODEL="openai/gpt-3.5-turbo"
+```
 
-2. Edit `~/.env` with your actual API keys
-
-3. Source it in your shell profile:
-   ```bash
-   echo 'source ~/.env' >> ~/.zshrc
-   ```
-
-#### Option 3: Project-specific .env (Less Secure)
-
-1. Copy the template:
-   ```bash
-   cp .env.template .env
-   ```
-
-2. Edit `.env` with your actual API keys
-
-3. Verify `.env` is ignored:
-   ```bash
-   git status  # .env should NOT appear in untracked files
-   ```
+Note: These will only persist for the current terminal session.
 
 ### Protected Files
 
@@ -75,7 +58,7 @@ These files are automatically ignored by git:
 3. Remove the keys from git history:
    ```bash
    git filter-branch --force --index-filter \
-   'git rm --cached --ignore-unmatch .env' \
+   'git rm --cached --ignore-unmatch .env*' \
    --prune-empty --tag-name-filter cat -- --all
    ```
 4. Force push to update remote repository

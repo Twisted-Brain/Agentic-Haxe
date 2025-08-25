@@ -11,6 +11,10 @@ import domain.core.AiModel;
 import domain.core.Conversation;
 import wiring.ApplicationBootstrap;
 import wiring.DependencyContainer;
+import wiring.ApiModels.LlmRequest;
+import platform.frontend.LoggerJs;
+import platform.frontend.PlatformClockJs;
+import platform.frontend.HttpClientJs;
 using StringTools;
 
 class WebAppMain {

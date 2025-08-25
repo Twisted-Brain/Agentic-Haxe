@@ -1,7 +1,7 @@
 # Haxe Project Makefile
 # Provides convenient commands for building and testing the project
 
-.PHONY: all build clean test frontend backend shared install serve-frontend run-backend help
+.PHONY: all build clean test frontend backend shared python-ml install serve-frontend run-backend run-python-ml help
 
 # Default target
 all: build
@@ -11,28 +11,33 @@ build:
 	@echo "Building all Haxe targets..."
 	./build.sh
 
+# Build Python ML service
+python-ml:
+	@echo "Building Python ML service..."
+	@mkdir -p bin/python
+	@haxe build-python.hxml
+	@echo "Python ML service build completed"
+
 # Build only frontend
 frontend:
 	@echo "Building JavaScript frontend..."
 	mkdir -p bin/frontend
-	haxe --js bin/frontend/webapp.js --main frontend.WebAppMain --class-path src --dce full
-	@cp src/frontend/index.html bin/frontend/ 2>/dev/null || echo "Warning: index.html not found"
-	@cp src/frontend/webapp-styles.css bin/frontend/ 2>/dev/null || echo "Warning: webapp-styles.css not found"
+	haxe build-frontend.hxml
+	@cp platform/frontend/index.html bin/frontend/ 2>/dev/null || echo "Warning: index.html not found"
+	@cp platform/frontend/webapp-styles.css bin/frontend/ 2>/dev/null || echo "Warning: webapp-styles.css not found"
 	@echo "Frontend build completed"
 
 # Build only backend
 backend:
 	@echo "Building C++ backend..."
 	@mkdir -p bin/backend
-	@haxe --cpp bin/backend --main backend.LlmGatewayMain --class-path src --library hxcpp --library haxe-crypto --define HXCPP_QUIET
+	@haxe --cpp bin/backend --main LlmGatewayMain --class-path platform/core/cpp --class-path domain --class-path wiring --library hxcpp --library haxe-crypto --define HXCPP_QUIET
 	@echo "Backend build completed"
 
-# Build only shared library
+# Build only shared library (deprecated - integrated into platform structure)
 shared:
-	@echo "Building shared library..."
-	mkdir -p bin/shared
-	haxe --js bin/shared/shared.js --main shared.SharedMain --class-path src --dce full
-	@echo "Shared library build completed"
+	@echo "Shared library target is deprecated - functionality integrated into platform structure"
+	@echo "Use 'make frontend' or 'make backend' instead"
 
 # Install required haxelibs
 install:
@@ -42,6 +47,12 @@ install:
 	@haxelib install hxcpp || echo "Warning: Could not install hxcpp"
 	@haxelib install haxe-crypto || echo "Warning: Could not install haxe-crypto"
 	@echo "Library installation completed"
+
+# Install Python ML dependencies
+install-python:
+	@echo "Installing Python ML dependencies..."
+	@pip install -r requirements.txt
+	@echo "Python dependencies installation completed"
 
 # Clean build artifacts
 clean:
@@ -69,6 +80,14 @@ run-backend: backend
 	@echo "Set OPENROUTER_API_KEY environment variable for real API access"
 	cd bin/backend && ./LlmGatewayMain
 
+# Run Python ML service
+run-python-ml: python-ml
+	@echo "Starting Python ML service..."
+	@echo "Installing Python dependencies..."
+	@pip install -r requirements.txt
+	@echo "ML service will be available at http://localhost:8080"
+	cd bin/python && python ml_service.py
+
 # Development mode - build and serve frontend
 dev: frontend
 	@echo "Starting development server..."
@@ -94,11 +113,14 @@ help:
 	@echo "  make frontend     - Build only JavaScript frontend"
 	@echo "  make backend      - Build only C++ backend"
 	@echo "  make shared       - Build only shared library"
+	@echo "  make python-ml    - Build Python ML service"
 	@echo "  make install      - Install required Haxe libraries"
+	@echo "  make install-python - Install Python ML dependencies"
 	@echo "  make clean        - Clean build artifacts"
 	@echo "  make test         - Run tests"
 	@echo "  make serve-frontend - Build and serve frontend webapp"
 	@echo "  make run-backend  - Build and run C++ backend"
+	@echo "  make run-python-ml - Build and run Python ML service"
 	@echo "  make dev          - Development mode (build and serve frontend)"
 	@echo "  make check        - Check Haxe installation and libraries"
 	@echo "  make struct       - Show project structure"

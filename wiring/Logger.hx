@@ -5,7 +5,7 @@ package wiring;
  * Provides unified logging interface across all targets
  */
 #if js
-typedef Logger = platform.frontend.js.LoggerJs;
+typedef Logger = platform.frontend.LoggerJs;
 #elseif cpp
 typedef Logger = platform.core.cpp.LoggerCpp;
 #elseif java

@@ -38,7 +38,6 @@ Agentic-Haxe/
 ├── Makefile               # Make commands
 ├── package.json           # Node.js dependencies
 ├── server.js              # Node.js Express server (active backend)
-├── .env                   # Environment configuration
 └── haxelib.json           # Project metadata
 ```
 
@@ -69,11 +68,16 @@ Agentic-Haxe/
    ```
 
 4. **Configure environment**:
-   Create a `.env` file in the project root:
+   Set Mac environment variables:
    ```bash
-   OPENROUTER_API_KEY=your-openrouter-api-key-here
-   OPENROUTER_BASE_URL=https://openrouter.ai/api/v1
-   BACKEND_PORT=3000
+   export OPENROUTER_API_KEY=your-openrouter-api-key-here
+   export OPENROUTER_BASE_URL=https://openrouter.ai/api/v1
+   export BACKEND_PORT=3000
+   
+   # Add to ~/.zshrc for persistence:
+   echo 'export OPENROUTER_API_KEY=your-openrouter-api-key-here' >> ~/.zshrc
+   echo 'export OPENROUTER_BASE_URL=https://openrouter.ai/api/v1' >> ~/.zshrc
+   echo 'export BACKEND_PORT=3000' >> ~/.zshrc
    ```
 
 5. **Build the project**:
@@ -131,12 +135,17 @@ OPENROUTER_API_KEY="your-key-here" make run-backend
 
 ### Environment Variables
 
-Create a `.env` file in the project root:
+Set Mac environment variables:
 
-```env
-OPENROUTER_API_KEY=your-openrouter-api-key-here
-OPENROUTER_BASE_URL=https://openrouter.ai/api/v1
-BACKEND_PORT=3000
+```bash
+export OPENROUTER_API_KEY=your-openrouter-api-key-here
+export OPENROUTER_BASE_URL=https://openrouter.ai/api/v1
+export BACKEND_PORT=3000
+
+# For persistence, add to ~/.zshrc:
+echo 'export OPENROUTER_API_KEY=your-openrouter-api-key-here' >> ~/.zshrc
+echo 'export OPENROUTER_BASE_URL=https://openrouter.ai/api/v1' >> ~/.zshrc
+echo 'export BACKEND_PORT=3000' >> ~/.zshrc
 ```
 
 - `OPENROUTER_API_KEY`: Your OpenRouter API key (required)
@@ -244,7 +253,7 @@ make clean
    ```
 
 5. **OpenRouter API errors**:
-   - Check your API key in `.env` file
+   - Check your API key in Mac environment variables: `echo $OPENROUTER_API_KEY`
    - Verify your OpenRouter account has credits
    - Check network connectivity
 

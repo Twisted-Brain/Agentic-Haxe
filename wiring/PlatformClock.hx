@@ -5,7 +5,7 @@ package wiring;
  * Provides unified time/clock interface across all targets
  */
 #if js
-typedef PlatformClock = platform.frontend.js.PlatformClockJs;
+typedef PlatformClock = platform.frontend.PlatformClockJs;
 #elseif cpp
 typedef PlatformClock = platform.core.cpp.PlatformClockCpp;
 #elseif java

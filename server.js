@@ -3,7 +3,6 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const axios = require('axios');
-require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,17 +12,14 @@ const OPENROUTER_BASE_URL = process.env.OPENROUTER_BASE_URL || 'https://openrout
 
 // Validate API key
 if (!OPENROUTER_API_KEY || OPENROUTER_API_KEY === 'your_openrouter_api_key_here') {
-  console.warn('⚠️  Warning: OpenRouter API key not configured. Please set OPENROUTER_API_KEY in .env file.');
-  console.warn('   Copy your API key from ~/.env to ./.env in the project directory.');
+  console.warn('⚠️  Warning: OpenRouter API key not configured. Please set OPENROUTER_API_KEY as Mac environment variable.');
+  console.warn('   Run: export OPENROUTER_API_KEY=your-api-key in your terminal or add to ~/.zshrc');
 }
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// Serve static files from bin/frontend
-app.use(express.static(path.join(__dirname, 'bin/frontend')));
 
 // API endpoint for real OpenRouter chat
 app.post('/api/chat', async (req, res) => {
@@ -36,7 +32,7 @@ app.post('/api/chat', async (req, res) => {
 
     if (!OPENROUTER_API_KEY || OPENROUTER_API_KEY === 'your_openrouter_api_key_here') {
       return res.status(500).json({ 
-        error: 'OpenRouter API key not configured. Please set OPENROUTER_API_KEY in .env file.' 
+        error: 'OpenRouter API key not configured. Please set OPENROUTER_API_KEY as Mac environment variable.' 
       });
     }
 
@@ -97,6 +93,9 @@ app.post('/api/chat', async (req, res) => {
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
+
+// Serve static files from bin/frontend
+app.use(express.static(path.join(__dirname, 'bin/frontend')));
 
 // Serve index.html for all other routes (SPA support)
 app.get('*', (req, res) => {

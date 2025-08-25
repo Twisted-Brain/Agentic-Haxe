@@ -1,5 +1,7 @@
 # JavaScript Frontend Target Only
 --js bin/frontend/webapp.js
 --main frontend.WebAppMain
---class-path src
+--class-path platform
+--class-path domain
+--class-path wiring
 --dce full

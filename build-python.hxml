@@ -1,0 +1,23 @@
+# Haxe Python ML Build Configuration
+# Compiles Haxe code to Python for ML integration
+
+# Target: Python
+-python bin/python/ml_service.py
+
+# Main class
+-main platform.core.python.PythonMLMain
+
+# Source paths
+-cp .
+-cp domain
+-cp platform
+-cp wiring
+
+# Python-specific defines
+-D ml_integration
+
+# Optimization flags
+-D analyzer-optimize
+
+# Debug information for development
+-D source-map

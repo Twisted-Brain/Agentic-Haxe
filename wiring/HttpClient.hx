@@ -5,7 +5,7 @@ package wiring;
  * This provides compile-time dependency injection without runtime overhead
  */
 #if js
-typedef HttpClient = platform.frontend.js.HttpClientJs;
+typedef HttpClient = platform.frontend.HttpClientJs;
 #elseif cpp
 typedef HttpClient = platform.core.cpp.HttpClientCpp;
 #elseif java
