@@ -38,6 +38,24 @@ obj/
 include/
 src/
 
+# C++ compilation artifacts
+**/obj/
+**/obj/**
+*.o
+*.obj
+*.pch
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.manifest
+*.res
+*.rc
+**/*___boot__.o
+**/darwin64/
+**/linux64/
+**/windows/
+
 # IDE and editor files
 .vscode/
 .idea/

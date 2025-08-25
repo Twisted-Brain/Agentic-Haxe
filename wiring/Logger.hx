@@ -5,19 +5,19 @@ package wiring;
  * Provides unified logging interface across all targets
  */
 #if js
-typedef Logger = platform.js.LoggerJs;
+typedef Logger = platform.frontend.js.LoggerJs;
 #elseif cpp
-typedef Logger = platform.cpp.LoggerCpp;
+typedef Logger = platform.core.cpp.LoggerCpp;
 #elseif java
-typedef Logger = platform.java.LoggerJava;
+typedef Logger = platform.core.java.LoggerJava;
 #elseif python
-typedef Logger = platform.python.LoggerPython;
+typedef Logger = platform.core.python.LoggerPython;
 #elseif php
-typedef Logger = platform.php.LoggerPhp;
+typedef Logger = platform.core.php.LoggerPhp;
 #elseif cs
-typedef Logger = platform.csharp.LoggerCsharp;
+typedef Logger = platform.core.csharp.LoggerCsharp;
 #elseif neko
-typedef Logger = platform.neko.LoggerNeko;
+typedef Logger = platform.core.neko.LoggerNeko;
 #else
 #error "Logger: Unsupported target platform"
 #end

@@ -116,22 +116,17 @@ frontend_WebAppMain.sendMessage = function() {
 	}
 };
 frontend_WebAppMain.callOpenRouterAPI = function(userMessage) {
-	var apiKey = "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";
-	var apiUrl = "https://openrouter.ai/api/v1/chat/completions";
-	var requestData = { "model" : "anthropic/claude-3-5-sonnet-20241022", "messages" : [{ "role" : "user", "content" : userMessage}], "max_tokens" : 1000, "temperature" : 0.7, "stream" : false};
+	var apiUrl = "/api/chat";
+	var requestData = { "message" : userMessage, "model" : "anthropic/claude-3-5-sonnet-20241022"};
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST",apiUrl,true);
 	xhr.setRequestHeader("Content-Type","application/json");
-	xhr.setRequestHeader("Authorization","Bearer " + apiKey);
-	xhr.setRequestHeader("HTTP-Referer","http://localhost:8000");
-	xhr.setRequestHeader("X-Title","Haxe LLM Gateway");
-	xhr.setRequestHeader("User-Agent","Haxe-LLM-Gateway/1.0");
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4) {
 			if(xhr.status == 200) {
 				try {
 					var response = JSON.parse(xhr.responseText);
-					var assistantMessage = response.choices[0].message.content;
+					var assistantMessage = response.response;
 					frontend_WebAppMain.addMessageToChat("assistant",assistantMessage);
 				} catch( _g ) {
 					var e = haxe_Exception.caught(_g).unwrap();

@@ -120,4 +120,13 @@ class AiModel {
         model.updatedAt = data.updatedAt;
         return model;
     }
+    
+    /**
+     * Generate a response using this AI model
+     * This is a placeholder implementation - in a real system this would call the actual AI API
+     */
+    public function generateResponse(input: String): String {
+        // Placeholder implementation - would integrate with actual AI service
+        return "AI Response to: " + input + " (from " + this.name + ")";
+    }
 }

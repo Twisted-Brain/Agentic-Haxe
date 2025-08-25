@@ -4,6 +4,7 @@
 --class-path src
 --class-path domain
 --class-path wiring
+--class-path shared
 --dce full
 
 --next
@@ -11,9 +12,11 @@
 # C++ Backend Target
 --cpp bin/backend
 --main backend.LlmGatewayMain
+--class-path src
 --class-path platform/core/cpp
 --class-path domain
 --class-path wiring
+--class-path shared
 --library hxcpp
 --library haxe-crypto
 --define HXCPP_QUIET
@@ -23,6 +26,8 @@
 # Shared Library Target
 --js bin/shared/shared.js
 --main shared.SharedMain
+--class-path src
 --class-path domain
 --class-path wiring
+--class-path shared
 --dce full

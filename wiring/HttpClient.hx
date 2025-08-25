@@ -5,19 +5,19 @@ package wiring;
  * This provides compile-time dependency injection without runtime overhead
  */
 #if js
-typedef HttpClient = platform.js.HttpClientJs;
+typedef HttpClient = platform.frontend.js.HttpClientJs;
 #elseif cpp
-typedef HttpClient = platform.cpp.HttpClientCpp;
+typedef HttpClient = platform.core.cpp.HttpClientCpp;
 #elseif java
-typedef HttpClient = platform.java.HttpClientJava;
+typedef HttpClient = platform.core.java.HttpClientJava;
 #elseif python
-typedef HttpClient = platform.python.HttpClientPython;
+typedef HttpClient = platform.core.python.HttpClientPython;
 #elseif php
-typedef HttpClient = platform.php.HttpClientPhp;
+typedef HttpClient = platform.core.php.HttpClientPhp;
 #elseif cs
-typedef HttpClient = platform.csharp.HttpClientCsharp;
+typedef HttpClient = platform.core.csharp.HttpClientCsharp;
 #elseif neko
-typedef HttpClient = platform.neko.HttpClientNeko;
+typedef HttpClient = platform.core.neko.HttpClientNeko;
 #else
 #error "HttpClient: Unsupported target platform"
 #end

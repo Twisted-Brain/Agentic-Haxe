@@ -10,9 +10,9 @@ A Proof of Concept project demonstrating how Haxe can be used to build both fron
 
 This project demonstrates:
 - **Frontend**: JavaScript webapp built with Haxe
-- **Backend**: C++ LLM gateway to OpenRouter API
+- **Backend**: Node.js Express server with OpenRouter API integration
 - **Shared**: Common code library between frontend and backend
-- **100% Haxe**: The entire project is written in Haxe and compiled to different targets
+- **Hybrid Architecture**: Haxe frontend with Node.js backend for optimal performance
 
 ## 🏗️ Project Structure
 
@@ -23,21 +23,22 @@ Agentic-Haxe/
 │   │   ├── WebAppMain.hx   # Main class for webapp
 │   │   ├── index.html      # HTML template
 │   │   └── webapp-styles.css # CSS styling
-│   ├── backend/            # C++ backend code
+│   ├── backend/            # Backend code (legacy)
 │   │   └── LlmGatewayMain.hx # LLM gateway main class
 │   └── shared/             # Shared code
 │       ├── ApiModels.hx    # API data models
 │       └── SharedMain.hx   # Shared library
 ├── bin/                    # Compiled files
 │   ├── frontend/           # JavaScript webapp
-│   ├── backend/            # C++ executable
+│   ├── backend/            # Backend executable (legacy)
 │   └── shared/             # Shared library
 ├── tests/                  # Test files
 ├── build.hxml             # Haxe build configuration
 ├── build.sh               # Build script
 ├── Makefile               # Make commands
 ├── package.json           # Node.js dependencies
-├── server.js              # Node.js server
+├── server.js              # Node.js Express server (active backend)
+├── .env                   # Environment configuration
 └── haxelib.json           # Project metadata
 ```
 
@@ -46,8 +47,8 @@ Agentic-Haxe/
 ### Prerequisites
 
 1. **Haxe**: Install Haxe from [haxe.org](https://haxe.org/download/)
-2. **C++ Compiler**: For backend (GCC or Clang)
-3. **Node.js**: For development server (Node.js 16+ recommended)
+2. **Node.js**: For backend server (Node.js 16+ recommended)
+3. **OpenRouter API Key**: Get your API key from [openrouter.ai](https://openrouter.ai/)
 
 ### Installation
 
@@ -67,7 +68,15 @@ Agentic-Haxe/
    npm install
    ```
 
-4. **Build the project**:
+4. **Configure environment**:
+   Create a `.env` file in the project root:
+   ```bash
+   OPENROUTER_API_KEY=your-openrouter-api-key-here
+   OPENROUTER_BASE_URL=https://openrouter.ai/api/v1
+   BACKEND_PORT=3000
+   ```
+
+5. **Build the project**:
    ```bash
    make build
    ```
@@ -96,16 +105,22 @@ make shared
 
 ## 🌐 Running
 
-### Frontend WebApp with Node.js Server
+### Full Application (Recommended)
 ```bash
-# Start Node.js development server
+# Start the complete application
 npm start
 # Open http://localhost:3000 in browser
 ```
 
-### Backend Gateway
+This starts:
+- Node.js Express server on port 3000
+- Serves the Haxe-compiled frontend
+- Provides `/api/chat` endpoint for LLM communication
+- Integrates with OpenRouter API
+
+### Legacy Backend (C++)
 ```bash
-# Run C++ gateway
+# Run legacy C++ gateway (optional)
 make run-backend
 
 # With real API key
@@ -121,12 +136,20 @@ Create a `.env` file in the project root:
 ```env
 OPENROUTER_API_KEY=your-openrouter-api-key-here
 OPENROUTER_BASE_URL=https://openrouter.ai/api/v1
-BACKEND_PORT=8080
+BACKEND_PORT=3000
 ```
 
-- `OPENROUTER_API_KEY`: Your OpenRouter API key
-- `OPENROUTER_BASE_URL`: OpenRouter API base URL
-- `BACKEND_PORT`: Port for C++ backend (default: 8080)
+- `OPENROUTER_API_KEY`: Your OpenRouter API key (required)
+- `OPENROUTER_BASE_URL`: OpenRouter API base URL (default: https://openrouter.ai/api/v1)
+- `BACKEND_PORT`: Port for Node.js server (default: 3000)
+
+### API Integration
+
+The application uses a hybrid architecture:
+- **Frontend**: Haxe-compiled JavaScript webapp
+- **Backend**: Node.js Express server with `/api/chat` endpoint
+- **API**: Direct integration with OpenRouter for LLM communication
+- **Communication**: Frontend calls local `/api/chat` which proxies to OpenRouter
 
 ## 🧪 Testing
 
