@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haxe LLM Gateway WebApp</title>
+    <link rel="stylesheet" href="webapp-styles.css">
+    <style>
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .status-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            border-radius: 20px;
+            background: rgba(102, 126, 234, 0.9);
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+        
+        .status-indicator.connected {
+            background: rgba(76, 175, 80, 0.9);
+        }
+        
+        .status-indicator.error {
+            background: rgba(244, 67, 54, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <!-- Status indicator -->
+    <div class="status-indicator" id="statusIndicator">
+        🔄 Initializing Haxe App...
+    </div>
+    
+    <!-- Main content -->
+    <div class="container">
+        <header class="app-header">
+            <h1>🤖 Haxe AI Chat Gateway</h1>
+            <p>Powered by Haxe Multi-Target with C++ Backend</p>
+        </header>
+        
+        <main class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message system-message">
+                    <div class="message-content">
+                        <strong>System:</strong> Welcome! Ask me anything and I'll respond using the Haxe C++ backend.
+                    </div>
+                    <div class="message-time">Just now</div>
+                </div>
+            </div>
+            
+            <div class="chat-input-container">
+                <div class="input-group">
+                    <input type="text" id="messageInput" placeholder="Type your message here..." maxlength="500">
+                    <button id="sendButton" class="send-btn">
+                        <span class="send-text">Send</span>
+                        <span class="loading-spinner" style="display: none;">⏳</span>
+                    </button>
+                </div>
+                <div class="model-selector">
+                    <label for="modelSelect">Model:</label>
+                    <select id="modelSelect">
+                        <option value="openai/gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                        <option value="openai/gpt-4">GPT-4</option>
+                        <option value="anthropic/claude-3-sonnet">Claude 3 Sonnet</option>
+                    </select>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Haxe JavaScript removed - using native JavaScript instead -->
+    
+    <script>
+        // Chat functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const statusIndicator = document.getElementById('statusIndicator');
+            const messageInput = document.getElementById('messageInput');
+            const sendButton = document.getElementById('sendButton');
+            const chatMessages = document.getElementById('chatMessages');
+            const modelSelect = document.getElementById('modelSelect');
+            
+            // Update status after app loads
+            setTimeout(() => {
+                statusIndicator.textContent = '✅ Node.js Server Ready';
+                statusIndicator.className = 'status-indicator connected';
+                
+                // Hide status after 3 seconds
+                setTimeout(() => {
+                    statusIndicator.style.opacity = '0';
+                    statusIndicator.style.transition = 'opacity 0.5s ease';
+                }, 3000);
+            }, 1000);
+            
+            // Send message function
+            async function sendMessage() {
+                const message = messageInput.value.trim();
+                const model = modelSelect.value;
+                
+                if (!message) return;
+                
+                // Add user message to chat
+                addMessageToChat('user', message);
+                messageInput.value = '';
+                
+                // Show loading state
+                setLoadingState(true);
+                
+                try {
+                    const response = await fetch('/api/chat', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ message, model })
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    
+                    // Add AI response to chat
+                    addMessageToChat('assistant', data.response, data.model);
+                    
+                } catch (error) {
+                    console.error('Error sending message:', error);
+                    addMessageToChat('system', `Error: ${error.message}`, null, true);
+                } finally {
+                    setLoadingState(false);
+                }
+            }
+            
+            // Add message to chat display
+            function addMessageToChat(sender, content, model = null, isError = false) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${sender}-message${isError ? ' error-message' : ''}`;
+                
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'message-content';
+                
+                if (sender === 'user') {
+                    contentDiv.innerHTML = `<strong>You:</strong> ${escapeHtml(content)}`;
+                } else if (sender === 'assistant') {
+                    contentDiv.innerHTML = `<strong>AI${model ? ` (${model})` : ''}:</strong> ${escapeHtml(content)}`;
+                } else {
+                    contentDiv.innerHTML = `<strong>System:</strong> ${escapeHtml(content)}`;
+                }
+                
+                const timeDiv = document.createElement('div');
+                timeDiv.className = 'message-time';
+                timeDiv.textContent = new Date().toLocaleTimeString();
+                
+                messageDiv.appendChild(contentDiv);
+                messageDiv.appendChild(timeDiv);
+                
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            // Set loading state
+            function setLoadingState(loading) {
+                const sendText = sendButton.querySelector('.send-text');
+                const loadingSpinner = sendButton.querySelector('.loading-spinner');
+                
+                if (loading) {
+                    sendText.style.display = 'none';
+                    loadingSpinner.style.display = 'inline';
+                    sendButton.disabled = true;
+                    messageInput.disabled = true;
+                } else {
+                    sendText.style.display = 'inline';
+                    loadingSpinner.style.display = 'none';
+                    sendButton.disabled = false;
+                    messageInput.disabled = false;
+                    messageInput.focus();
+                }
+            }
+            
+            // Escape HTML to prevent XSS
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+            
+            // Event listeners
+            sendButton.addEventListener('click', sendMessage);
+            messageInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+            
+            // Focus input on load
+            messageInput.focus();
+        });
+        
+        // Global error handler
+        window.addEventListener('error', function(e) {
+            const statusIndicator = document.getElementById('statusIndicator');
+            statusIndicator.textContent = '❌ Error: ' + e.message;
+            statusIndicator.className = 'status-indicator error';
+            statusIndicator.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
