@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="../../../assets/logo.png" alt="Agentic Haxe Logo" width="200" height="200">
+</div>
+
 # PoC 06: Multi-Target Universal Deploy Implementation
 
 ## Overview

@@ -1,4 +1,8 @@
-# PoC 03: Haxe PHP Target for Traditional Web Hosting
+<div align="center">
+  <img src="../assets/logo.png" alt="Agentic Haxe Logo" width="200" height="200">
+</div>
+
+# PoC 03: Haxe PHP Target for Traditional Hosting
 
 ## Overview
 Explore Haxe PHP compilation target for serverside AI processing with integration into existing PHP infrastructure and traditional web hosting.

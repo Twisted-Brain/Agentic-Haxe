@@ -1,4 +1,8 @@
-# PoC 05: Haxe C# Target for .NET Azure Microservices
+<div align="center">
+  <img src="../assets/logo.png" alt="Agentic Haxe Logo" width="200" height="200">
+</div>
+
+# PoC 05: Haxe C# Target for Azure Microservices
 
 ## Overview
 Explore Haxe C# compilation target for .NET AI microservices with Azure cloud deployment and enterprise integration.

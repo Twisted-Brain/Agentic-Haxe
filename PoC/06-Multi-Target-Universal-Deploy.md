@@ -1,4 +1,8 @@
-# PoC 06: Haxe Multi-Target Universal Deployment System
+<div align="center">
+  <img src="../assets/logo.png" alt="Agentic Haxe Logo" width="200" height="200">
+</div>
+
+# PoC 06: Multi-Target Universal Deployment System
 
 ## Overview
 Develop a comprehensive multi-target build system that can deploy the same AI logic to all server platforms simultaneously, demonstrating Haxe's true cross-platform power.
