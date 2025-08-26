@@ -26,3 +26,15 @@ The project will follow the Hexagonal Architecture pattern to ensure a clean sep
     - **Backend (`/platform/core`):** Contains server-side implementations. All Haxe code for a specific backend target (e.g., JS, C#, PHP) **must** be placed in a corresponding subdirectory (e.g., `platform/core/js`, `platform/core/csharp`).
     - **Frontend (`/platform/frontend`):** Contains the client-side web application implementations. All Haxe source files, HTML, CSS, and other assets for a specific frontend target **must** be placed in a corresponding subdirectory (e.g., `platform/frontend/js`). The primary target for the web app is a React JS application compiled from Haxe.
 - **Technology Stack:** The entire application will be coded in Haxe. External libraries can be used, either from Haxelib or specific to the target platform (e.g., npm packages for the React frontend).
+
+## Chat UI Design
+Use /Doc/React-UI.md
+
+## App Design
+**Single Page Application (SPA)** → A React-based web application where all views and components reside within the app itself, with client-side navigation handling all routing.
+
+**Bundled Application with Embedded Assets** → During build time, all resources (JS, CSS, images, fonts, etc.) are compiled into a single set of static files (index.html + bundle.js + assets/).
+
+**Online Only** → No service worker, no offline cache – the application loads all content from the web server each time, but feels like a "native" app in the browser because it doesn't reload between pages.
+
+👉 **Summary:** A React Single Page Application (SPA) with embedded assets that runs fully online without offline caching capabilities.

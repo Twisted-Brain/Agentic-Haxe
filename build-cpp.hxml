@@ -1,0 +1,8 @@
+--class-path domain
+--class-path platform/core/cpp
+
+--main platform.core.cpp.Gateway
+
+--cpp bin/cpp_gateway
+
+-D HXCPP_QUIET

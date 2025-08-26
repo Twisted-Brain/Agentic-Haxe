@@ -1,0 +1,8 @@
+--library react
+--class-path domain
+--class-path platform/frontend/js
+
+--main platform.frontend.js.Main
+
+--js www/build/app.js
+-dce full

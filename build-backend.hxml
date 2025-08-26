@@ -1,0 +1,9 @@
+--library hxnodejs
+--class-path domain
+--class-path platform/core/js
+
+--main platform.core.js.NodeServer
+
+--js www/build/server.js
+
+-dce full
