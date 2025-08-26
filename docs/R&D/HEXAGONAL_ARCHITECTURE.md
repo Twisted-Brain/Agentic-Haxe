@@ -1,7 +1,7 @@
 # Hexagonal Architecture for Haxe AI Project
 
 <div align="center">
-  <img src="../../assets/logo.png" alt="Haxe Hexagonal Architecture Logo" width="120" height="120">
+  <img src="../../assets/rd-banner.png" alt="R&D Banner">
 </div>
 
 ## Overview
@@ -407,6 +407,6 @@ class OpenRouterIntegrationTest {
 
 This hexagonal architecture ensures our Haxe AI project remains maintainable, testable, and truly cross-platform while leveraging the unique strengths of each compilation target.
 
-<div align="right">
-  <img src="../../assets/hdevm.png" alt="HDevelop & M" width="150" height="150">
+<div align="center">
+  <img src="../../assets/footer.png" alt="Footer">
 </div>

@@ -1,7 +1,7 @@
 # Security Guidelines
 
 <div align="center">
-  <img src="../../assets/logo.png" alt="Haxe Security Logo" width="100" height="100">
+  <img src="../../assets/rd-banner.png" alt="R&D Banner">
 </div>
 
 ## Environment Variables
@@ -18,7 +18,11 @@
 #### Mac Environment Variables (Recommended)
 
 1. Add to your shell profile (`~/.zshrc` or `~/.bashrc`):
-   ```bash
+   ```
+
+<div align="center">
+  <img src="../../assets/footer.png" alt="Footer">
+</div>bash
    # Haxe Agentic AI Configuration
    export OPENROUTER_API_KEY="sk-or-v1-your-actual-key"
    export OPENROUTER_BASE_URL="https://openrouter.ai/api/v1"
@@ -69,3 +73,7 @@ These files are automatically ignored by git:
 - Use `.template` files for documentation
 - Regular security audits of dependencies
 - Never hardcode secrets in source code
+
+<div align="center">
+  <img src="../../assets/footer.png" alt="Footer">
+</div>

@@ -1,7 +1,7 @@
 # Haxe AI Proof of Concepts (PoC) Structure
 
 <div align="center">
-  <img src="../assets/logo.png" alt="Haxe AI PoC Logo" width="150" height="150">
+  <img src="../assets/readme-banner.png" alt="Haxe AI PoC Banner">
 </div>
 
 This directory contains multiple Proof of Concept implementations demonstrating Haxe's capabilities across different server targets and deployment platforms for AI applications.
@@ -224,6 +224,6 @@ When adding new PoCs or modifying existing ones:
 3. Establish PoC 07 (Benchmarks) infrastructure
 4. Measure and document code reuse percentages
 
-<div align="right">
-  <img src="../assets/hdevm.png" alt="HDevelop & M" width="150" height="150">
+<div align="center">
+  <img src="../assets/footer.png" alt="Footer">
 </div>

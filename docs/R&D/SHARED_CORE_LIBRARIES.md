@@ -1,7 +1,7 @@
 # Shared Core Libraries for Haxe AI Project
 
 <div align="center">
-  <img src="../../assets/logo.png" alt="Haxe Shared Core Libraries Logo" width="120" height="120">
+  <img src="../../assets/rd-banner.png" alt="R&D Banner">
 </div>
 
 ## Overview
@@ -619,3 +619,7 @@ class SharedCoreTestSuite {
 6. **Phase 6**: Add comprehensive testing and documentation
 
 These shared core libraries will serve as the foundation for all our Haxe AI PoCs, ensuring consistency, maintainability, and code reuse across all target platforms.
+
+<div align="center">
+  <img src="../../assets/footer.png" alt="Footer">
+</div>

@@ -1,7 +1,7 @@
 # Haxe as an AI Programming Language
 
 <div align="center">
-  <img src="../../assets/logo.png" alt="Haxe AI Programming Logo" width="120" height="120">
+  <img src="../../assets/rd-banner.png" alt="R&D Banner">
 </div>
 
 ## Overview
@@ -245,6 +245,6 @@ For teams building modern AI applications that need to run everywhere—from web
 
 *This document is based on practical experience building a real-world AI application using Haxe, demonstrating its capabilities through working code rather than theoretical concepts.*
 
-<div align="right">
-  <img src="../../assets/hdevm.png" alt="HDevelop & M" width="150" height="150">
+<div align="center">
+  <img src="../../assets/footer.png" alt="Footer">
 </div>

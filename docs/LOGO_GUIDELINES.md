@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="../assets/tb.png" alt="Agentic Haxe Logo" width="200" height="200">
+  <img src="../assets/doc-banner.png" alt="Doc Banner">
 </div>
 
 # Logo Usage Guidelines
@@ -171,6 +171,6 @@ assets/
 ## Contact
 For questions about logo usage or brand guidelines, refer to the project maintainers or create an issue in the project repository.
 
-<div align="right">
-  <img src="../assets/hdevm.png" alt="HDevelop & M" width="150" height="150">
+<div align="center">
+  <img src="../assets/footer.png" alt="Footer">
 </div>

@@ -1,6 +1,8 @@
 # Wiring - Dependency Injection System
 
-![Agentic Haxe Logo](/assets/logo.png)
+<div align="center">
+  <img src="../assets/readme-banner.png" alt="Readme Banner">
+</div>
 
 This directory contains the **typedef-bindings** and dependency injection framework for the hexagonal architecture.
 
@@ -77,3 +79,7 @@ ApplicationBootstrap.shutdown();
 - Neko (neko)
 
 Unsupported platforms will generate compile-time errors with helpful messages.
+
+<div align="center">
+  <img src="../assets/footer.png" alt="Footer">
+</div>

@@ -1,4 +1,6 @@
-![Logo](../../assets/logo.png)
+<div align="center">
+  <img src="../../assets/rd-banner.png" alt="R&D Banner">
+</div>
 
 # Component Reuse Pattern Documentation
 
@@ -194,6 +196,6 @@ The hexagonal architecture pattern enables significant code reuse across PoCs wh
 
 This approach reduces development time, improves consistency, and enables rapid prototyping of new platform combinations.
 
-<div align="right">
-  <img src="../../assets/hdevm.png" alt="HDevelop & M" width="150" height="150">
+<div align="center">
+  <img src="../../assets/footer.png" alt="Footer">
 </div>

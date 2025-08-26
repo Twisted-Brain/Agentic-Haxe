@@ -1,4 +1,6 @@
-# 📐 Canvas: AI Chat UI – *Twisted Brain*
+<div align="center">
+  <img src="../assets/doc-banner.png" alt="Doc Banner">
+</div>
 
 ## 🎯 Formål
 
@@ -120,3 +122,7 @@ interface Message {
 ---
 
 👉 Denne **Canvas doc** er tænkt som ét ark du kan give direkte til en AI-Dev-coder – så har de **UX-flowet, farverne, komponenttræet, datamodellen, og interaktionskravene** på ét sted uden at skulle tolke.
+
+<div align="center">
+  <img src="../assets/footer.png" alt="Footer">
+</div>

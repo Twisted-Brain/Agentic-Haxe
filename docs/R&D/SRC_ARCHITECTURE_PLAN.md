@@ -1,7 +1,7 @@
 # Source Architecture Plan for Haxe AI Project
 
 <div align="center">
-  <img src="assets/logo.png" alt="Haxe Source Architecture Logo" width="120" height="120">
+  <img src="../../assets/rd-banner.png" alt="R&D Banner">
 </div>
 
 ## Overview
@@ -467,3 +467,7 @@ build/
 - **Multi-Target**: Deploy to optimal platforms
 
 This architecture provides a solid foundation for implementing all the PoCs while maintaining code quality, testability, and platform-specific optimizations.
+
+<div align="center">
+  <img src="../../assets/footer.png" alt="Footer">
+</div>
