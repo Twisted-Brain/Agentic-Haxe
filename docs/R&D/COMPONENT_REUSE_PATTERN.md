@@ -193,3 +193,7 @@ project/
 The hexagonal architecture pattern enables significant code reuse across PoCs while maintaining clean separation of concerns. The same frontend can communicate with multiple backend implementations, and core business logic remains platform-independent.
 
 This approach reduces development time, improves consistency, and enables rapid prototyping of new platform combinations.
+
+<div align="right">
+  <img src="../../assets/hdevm.png" alt="HDevelop & M" width="50" height="50">
+</div>
