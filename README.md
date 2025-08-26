@@ -8,7 +8,7 @@
 This repository contains a Proof of Concept (PoC) for building a comprehensive, multi-platform AI application using the **Haxe** programming language. The primary objective is to demonstrate Haxe's power and flexibility in creating a unified codebase that can be deployed across various targets, including:
 
 *   **Web (JavaScript/React)**
-*   **Backend Servers (Node.js, Python, C++, Java, C#, PHP, Neko)**
+*   **Backend Servers (C++, Python, Java, C#, PHP, Neko)**
 *   **Desktop and Mobile (via C++)**
 
 The project follows a **Hexagonal Architecture** to ensure a clean separation between the core application logic (`domain`) and platform-specific implementations (`platform`).
@@ -21,7 +21,7 @@ The repository is organized as follows:
 
 - **`/PoC/`**: Contains detailed markdown documents for each specific Proof of Concept. Start here to understand the goals of each sub-project.
 - **`/domain/`**: The shared, platform-agnostic core logic of the application. This is the heart of the project.
-- **`/platform/`**: Contains the platform-specific code that adapts the `domain` core to different targets (e.g., JS for web, Python for a server).
+- **`/platform/`**: Contains the platform-specific code that adapts the `domain` core to different targets (e.g., JS for web, C++ for high-performance server).
 - **`/docs/`**: High-level documentation covering architecture, design patterns, and project standards.
 - **`/assets/`**: Shared assets like logos and images.
 

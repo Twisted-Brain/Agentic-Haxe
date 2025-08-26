@@ -1,6 +1,6 @@
-![Haxe Multi-Platform Logo](/assets/logo.png)
+![logo](/assets/logo.png)
 
-# PoC 01: Haxe 2-Tier - React Frontend & C++ Backend
+# PoC: 2-Tier Haxe Application with React Frontend and C++ Backend
 
 ## ::GOAL
 This Proof of Concept (PoC) demonstrates a 2-tier, fullstack Haxe application based on the principles in [00-Haxe-AI-Chat-PoC.md](./00-Haxe-AI-Chat-PoC.md). The architecture consists of:
@@ -125,13 +125,82 @@ class BackendServer {
 -D HXCPP_QUIET
 ```
 
-### Deployment
+## ::TESTING STRATEGY
 
-1. **Build the frontend**: Compile React app to `www/build/app.js`
-2. **Build the backend**: Compile C++ server to `bin/backend_server`
-3. **Set environment variable**: `export OPENROUTER_API_KEY=your_api_key`
-4. **Run the server**: `./bin/backend_server/BackendServer`
-5. **Access the app**: Open `http://localhost:8080` in your browser
+This project employs a multi-layered testing strategy to ensure robustness, correctness, and reliability across the entire application stack.
+
+### 1. Unit Testing
+
+**Goal:** Verify the correctness of individual components (classes, functions) in isolation.
+
+*   **Domain Logic (`/domain`):**
+    *   **Tool:** `munit` (a popular Haxe testing framework).
+    *   **Scenario:** Create test cases for `Conversation.hx` to ensure state transitions (e.g., adding messages, tracking user/AI turns) are handled correctly.
+    *   **Execution:** Run `haxe test.hxml` to compile and run tests on the desired target (e.g., Node.js for speed).
+
+*   **Frontend Components (`/platform/frontend`):**
+    *   **Tool:** `munit` and `js-virtual-dom`.
+    *   **Scenario:** Test React components like `ChatView.hx` to verify that `render()` produces the correct DOM structure based on different state inputs (e.g., an empty message list vs. a populated one).
+    *   **Execution:** Run frontend-specific test configuration.
+
+*   **Backend Handlers (`/platform/core/cpp`):**
+    *   **Tool:** `munit`.
+    *   **Scenario:** Test the `handleChatRequest` function by mocking `HttpRequest` and `HttpResponse` objects. Verify that it correctly parses requests, handles missing API keys, and formats responses.
+    *   **Execution:** Run backend-specific test configuration.
+
+### 2. Integration Testing
+
+**Goal:** Verify that different parts of the application work together as expected.
+
+*   **Scenario 1: Frontend <-> Backend API**
+    *   **Setup:** Run the C++ backend server. Use a separate Haxe test file to make HTTP requests to the `/api/chat` endpoint.
+    *   **Verification:**
+        *   Assert that a valid `POST` request receives a `200 OK` response.
+        *   Assert that the response body is valid JSON and contains the expected fields.
+        *   Assert that a request with a malformed body returns a `400 Bad Request` error.
+
+*   **Scenario 2: Backend <-> OpenRouter API**
+    *   **Setup:** Create a test that calls the internal function responsible for forwarding requests to OpenRouter.
+    *   **Verification:**
+        *   Use a mock HTTP client or a tool like `mock-server` to simulate the OpenRouter API.
+        *   Ensure the `Authorization` header is correctly set with the API key.
+        *   Verify that the backend correctly handles success and error responses from the mock OpenRouter API.
+
+### 3. End-to-End (E2E) Testing
+
+**Goal:** Simulate a real user workflow from the UI to the database and back.
+
+*   **Tool:** A browser automation tool like `Selenium` or `Puppeteer` with a Haxe wrapper if available, or a JS-based test runner like `Cypress` acting on the compiled JS.
+*   **Scenario:**
+    1.  **Build and Run:** Compile both frontend and backend, set the `OPENROUTER_API_KEY`, and start the C++ server.
+    2.  **Launch Browser:** The E2E test script opens a browser and navigates to `http://localhost:8080`.
+    3.  **Interact with UI:**
+        *   The script waits for the `ChatView` component to be rendered.
+        *   It types "Hello, world!" into the text input field.
+        *   It clicks the "Send" button.
+    4.  **Verification:**
+        *   The script asserts that the user's message ("Hello, world!") appears in the message list.
+        *   It waits for the AI's response to appear in the message list.
+        *   It checks the network tab (or uses proxying) to confirm a `POST` request was made to `/api/chat` and a successful response was received.
+
+### Manual Test & Run Procedure
+
+For quick validation and manual testing:
+
+1.  **Build Frontend & Backend:**
+    ```bash
+    ./build.sh
+    ```
+2.  **Set Environment Variable:**
+    ```bash
+    export OPENROUTER_API_KEY='your_super_secret_key'
+    ```
+3.  **Run the Server:**
+    ```bash
+    ./bin/server
+    ```
+4.  **Access the Application:**
+    *   Open your web browser and navigate to `http://localhost:8080`.
 
 ## ::CONCLUSION
 This PoC demonstrates a streamlined 2-tier architecture using Haxe to target two platforms: a React frontend and a unified C++ backend. This model provides maximum security by isolating the API key in a compiled, native server while simplifying deployment and maintenance. The architecture leverages C++'s performance for both web serving and API gateway functionality, while the shared `domain` core demonstrates Haxe's power for creating highly reusable, cross-platform code. The UI follows the modern **Twisted Brain** design system for an engaging user experience.

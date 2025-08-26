@@ -1,8 +1,6 @@
---library react
---class-path domain
---class-path platform/frontend/js
-
---main platform.frontend.js.Main
-
---js www/build/app.js
--dce full
+-cp platform/frontend/src
+-lib react
+-lib haxelib
+-lib hxnodejs
+-js www/build/app.js
+-main Main

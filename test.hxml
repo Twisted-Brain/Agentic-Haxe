@@ -1,0 +1,6 @@
+-cp tests
+-cp domain
+-lib munit
+-lib hxnodejs
+-main TestMain
+-js tests.js

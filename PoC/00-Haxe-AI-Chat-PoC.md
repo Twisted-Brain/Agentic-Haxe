@@ -38,3 +38,38 @@ Use /Doc/React-UI.md
 **Online Only** → No service worker, no offline cache – the application loads all content from the web server each time, but feels like a "native" app in the browser because it doesn't reload between pages.
 
 👉 **Summary:** A React Single Page Application (SPA) with embedded assets that runs fully online without offline caching capabilities.
+
+## ::TESTING
+This section outlines the testing strategy for the Haxe AI Chat Application, covering both the frontend and backend components. The goal is to ensure the application is robust, reliable, and provides a seamless user experience.
+
+### ::TESTING_STRATEGY
+A multi-layered testing approach will be adopted to validate the application's functionality, performance, and usability.
+
+- **Unit Testing:** To verify the correctness of individual components, such as utility functions, UI components, and business logic modules.
+- **Integration Testing:** To ensure that different parts of the application work together as expected. This includes testing the integration between the frontend and backend, as well as the integration with the OpenRouter API.
+- **End-to-End (E2E) Testing:** To simulate real user scenarios and validate the complete application flow.
+
+### ::TESTING_FRAMEWORKS
+- **Frontend (React):**
+    - **Jest:** A JavaScript testing framework for unit and integration testing of React components.
+    - **React Testing Library:** A library for testing React components in a way that resembles how users interact with them.
+- **Backend (Haxe):**
+    - **Massive Unit:** A popular unit testing framework for Haxe.
+
+### ::TEST_SCENARIOS
+#### User Interface (UI) Testing
+- **Component Rendering:** Verify that all UI components render correctly with different props and states.
+- **User Interactions:** Test all user interactions, such as sending messages, receiving responses, and managing conversation history.
+- **API Key Input:**
+    - **100% Web App:** Test the input and validation of the OpenRouter API key provided by the user.
+    - **Web App with Backend:** Verify that the frontend correctly communicates with the backend without exposing the API key.
+- **Responsive Design:** Ensure the application is responsive and works seamlessly on different screen sizes.
+
+#### AI and Backend Testing
+- **API Integration:**
+    - **OpenRouter:** Test the integration with the OpenRouter API, including sending requests and handling responses (both successful and error cases).
+- **Business Logic:**
+    - **Conversation Management:** Verify the logic for creating, storing, and retrieving conversations.
+    - **AI Model Interaction:** Test the interaction with the AI model, including the handling of different message types and conversation contexts.
+- **Security:**
+    - **API Key Security (Backend Model):** Ensure the API key is securely stored and accessed on the backend, and not exposed to the client.
