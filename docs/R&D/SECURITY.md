@@ -1,7 +1,7 @@
 # Security Guidelines
 
 <div align="center">
-  <img src="assets/logo.png" alt="Haxe Security Logo" width="100" height="100">
+  <img src="../../assets/logo.png" alt="Haxe Security Logo" width="100" height="100">
 </div>
 
 ## Environment Variables

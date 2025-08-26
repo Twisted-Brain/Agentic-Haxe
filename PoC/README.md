@@ -223,3 +223,7 @@ When adding new PoCs or modifying existing ones:
 2. Build PoC 06 (Multi-Target) orchestration
 3. Establish PoC 07 (Benchmarks) infrastructure
 4. Measure and document code reuse percentages
+
+<div align="right">
+  <img src="../assets/hdevm.png" alt="HDevelop & M" width="50" height="50">
+</div>

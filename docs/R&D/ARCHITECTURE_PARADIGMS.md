@@ -1,7 +1,7 @@
 # Architecture Paradigms for Haxe AI PoCs
 
 <div align="center">
-  <img src="assets/logo.png" alt="Haxe AI Architecture Logo" width="120" height="120">
+  <img src="../../assets/logo.png" alt="Haxe AI Architecture Logo" width="120" height="120">
 </div>
 
 ## Overview
@@ -330,3 +330,7 @@ class FunctionalAIPipeline {
 6. **Prototype actor model** for high-concurrency scenarios
 
 Each paradigm should be evaluated based on the specific requirements and constraints of each Haxe target platform.
+
+<div align="right">
+  <img src="../../assets/hdevm.png" alt="HDevelop & M" width="50" height="50">
+</div>

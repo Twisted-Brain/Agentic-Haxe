@@ -1,4 +1,4 @@
-![Haxe Multi-Platform Logo](/assets/logo.png)
+![Haxe Multi-Platform Logo](../assets/logo.png)
 
 # PoC 02: Haxe 2-Tier - React Frontend & Python Backend
 

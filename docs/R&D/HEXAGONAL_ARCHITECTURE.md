@@ -1,7 +1,7 @@
 # Hexagonal Architecture for Haxe AI Project
 
 <div align="center">
-  <img src="assets/logo.png" alt="Haxe Hexagonal Architecture Logo" width="120" height="120">
+  <img src="../../assets/logo.png" alt="Haxe Hexagonal Architecture Logo" width="120" height="120">
 </div>
 
 ## Overview

@@ -1,4 +1,4 @@
-![logo](/assets/logo.png)
+![logo](../assets/logo.png)
 
 # PoC: 2-Tier Haxe Application with React Frontend and C++ Backend
 

@@ -1,4 +1,6 @@
-![Haxe Multi-Platform Logo](/assets/logo.png)
+<div align="center">
+  <img src="../assets/logo.png" alt="Twisted Brain" width="100">
+</div>
 
 # Proof of Concept: Haxe AI Chat Application
 

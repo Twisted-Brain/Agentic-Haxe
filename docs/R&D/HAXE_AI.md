@@ -1,7 +1,7 @@
 # Haxe as an AI Programming Language
 
 <div align="center">
-  <img src="assets/logo.png" alt="Haxe AI Programming Logo" width="120" height="120">
+  <img src="../../assets/logo.png" alt="Haxe AI Programming Logo" width="120" height="120">
 </div>
 
 ## Overview
@@ -242,8 +242,5 @@ Our PoC demonstrates that Haxe is not just viable for AI development—it's **re
 
 For teams building modern AI applications that need to run everywhere—from web browsers to edge devices to cloud servers—Haxe offers a compelling solution that traditional single-target languages simply cannot match.
 
-
-Regards and enjoy,TwistedBrain & AI freinds
----
 
 *This document is based on practical experience building a real-world AI application using Haxe, demonstrating its capabilities through working code rather than theoretical concepts.*

@@ -1,7 +1,7 @@
 # Shared Core Libraries for Haxe AI Project
 
 <div align="center">
-  <img src="assets/logo.png" alt="Haxe Shared Core Libraries Logo" width="120" height="120">
+  <img src="../../assets/logo.png" alt="Haxe Shared Core Libraries Logo" width="120" height="120">
 </div>
 
 ## Overview
