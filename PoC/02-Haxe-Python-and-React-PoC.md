@@ -232,3 +232,7 @@ gunicorn --bind 0.0.0.0:8080 --workers 4 python_backend_server:app
 - **Scalability**: Can be easily containerized and scaled horizontally
 
 The application now functions as expected, with the React frontend communicating with the Python backend that reuses Haxe domain logic, demonstrating the flexibility and reusability of the hexagonal architecture pattern.
+
+<div align="right">
+  <img src="../assets/hdevm.png" alt="HDevelop & M" width="150" height="150">
+</div>

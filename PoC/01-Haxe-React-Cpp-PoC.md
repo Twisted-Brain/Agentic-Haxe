@@ -204,3 +204,7 @@ For quick validation and manual testing:
 
 ## ::CONCLUSION
 This PoC demonstrates a streamlined 2-tier architecture using Haxe to target two platforms: a React frontend and a unified C++ backend. This model provides maximum security by isolating the API key in a compiled, native server while simplifying deployment and maintenance. The architecture leverages C++'s performance for both web serving and API gateway functionality, while the shared `domain` core demonstrates Haxe's power for creating highly reusable, cross-platform code. The UI follows the modern **Twisted Brain** design system for an engaging user experience.
+
+<div align="right">
+  <img src="../assets/hdevm.png" alt="HDevelop & M" width="150" height="150">
+</div>

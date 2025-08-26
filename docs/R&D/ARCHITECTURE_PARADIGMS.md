@@ -332,5 +332,5 @@ class FunctionalAIPipeline {
 Each paradigm should be evaluated based on the specific requirements and constraints of each Haxe target platform.
 
 <div align="right">
-  <img src="../../assets/hdevm.png" alt="HDevelop & M" width="50" height="50">
+  <img src="../../assets/hdevm.png" alt="HDevelop & M" width="150" height="150">
 </div>

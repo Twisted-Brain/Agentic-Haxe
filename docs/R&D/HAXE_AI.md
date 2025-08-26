@@ -244,3 +244,7 @@ For teams building modern AI applications that need to run everywhere—from web
 
 
 *This document is based on practical experience building a real-world AI application using Haxe, demonstrating its capabilities through working code rather than theoretical concepts.*
+
+<div align="right">
+  <img src="../../assets/hdevm.png" alt="HDevelop & M" width="150" height="150">
+</div>

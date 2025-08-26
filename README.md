@@ -86,5 +86,5 @@ To build and run this project, follow these steps:
 This project serves as a living document and a practical example of modern, cross-platform development with Haxe.
 
 <div align="right">
-  <img src="./assets/hdevm.png" alt="HDevelop & M" width="50" height="50">
+  <img src="assets/hdevm.png" alt="HDevelop & M" width="150" height="150">
 </div>

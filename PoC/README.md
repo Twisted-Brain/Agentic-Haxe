@@ -225,5 +225,5 @@ When adding new PoCs or modifying existing ones:
 4. Measure and document code reuse percentages
 
 <div align="right">
-  <img src="../assets/hdevm.png" alt="HDevelop & M" width="50" height="50">
+  <img src="../assets/hdevm.png" alt="HDevelop & M" width="150" height="150">
 </div>

@@ -75,3 +75,7 @@ A multi-layered testing approach will be adopted to validate the application's f
     - **AI Model Interaction:** Test the interaction with the AI model, including the handling of different message types and conversation contexts.
 - **Security:**
     - **API Key Security (Backend Model):** Ensure the API key is securely stored and accessed on the backend, and not exposed to the client.
+
+<div align="right">
+  <img src="../assets/hdevm.png" alt="HDevelop & M" width="150" height="150">
+</div>

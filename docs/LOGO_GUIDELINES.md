@@ -171,4 +171,6 @@ assets/
 ## Contact
 For questions about logo usage or brand guidelines, refer to the project maintainers or create an issue in the project repository.
 
-![logo](../assets/hdevm.png)
+<div align="right">
+  <img src="../assets/hdevm.png" alt="HDevelop & M" width="150" height="150">
+</div>

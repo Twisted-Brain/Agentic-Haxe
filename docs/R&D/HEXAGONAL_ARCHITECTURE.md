@@ -406,3 +406,7 @@ class OpenRouterIntegrationTest {
 6. **Phase 6**: Implement platform-specific optimizations
 
 This hexagonal architecture ensures our Haxe AI project remains maintainable, testable, and truly cross-platform while leveraging the unique strengths of each compilation target.
+
+<div align="right">
+  <img src="../../assets/hdevm.png" alt="HDevelop & M" width="150" height="150">
+</div>

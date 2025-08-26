@@ -195,5 +195,5 @@ The hexagonal architecture pattern enables significant code reuse across PoCs wh
 This approach reduces development time, improves consistency, and enables rapid prototyping of new platform combinations.
 
 <div align="right">
-  <img src="../../assets/hdevm.png" alt="HDevelop & M" width="50" height="50">
+  <img src="../../assets/hdevm.png" alt="HDevelop & M" width="150" height="150">
 </div>
